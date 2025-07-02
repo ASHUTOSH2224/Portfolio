@@ -12,7 +12,6 @@ import Footer from './components/Footer';
 // Admin imports
 import AdminLayout from './admin/layout/AdminLayout';
 import Dashboard from './admin/pages/Dashboard';
-import AdminUsers from './admin/pages/AdminUsers';
 import UserAnalytics from './admin/pages/UserAnalytics';
 import PortfolioManagement from './admin/pages/PortfolioManagement';
 import ContactManagement from './admin/pages/ContactManagement';
@@ -48,7 +47,6 @@ const AdminRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/users" element={<AdminUsers />} />
       <Route path="/analytics" element={<UserAnalytics />} />
       <Route path="/portfolio" element={<PortfolioManagement />} />
       <Route path="/contact" element={<ContactManagement />} />

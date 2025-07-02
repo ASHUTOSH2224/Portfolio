@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Home, 
-  User, 
   Settings, 
   Briefcase, 
   Mail, 
@@ -23,8 +22,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
   const location = useLocation();
 
   const navigationItems = [
-    { icon: Home, label: 'Home', href: '/admin', active: location.pathname === '/admin' },
-    { icon: User, label: 'Users', href: '/admin/users', active: location.pathname === '/admin/users' },
+    { icon: Home, label: 'Dashboard', href: '/admin', active: location.pathname === '/admin' },
     { icon: Settings, label: 'Analytics', href: '/admin/analytics', active: location.pathname === '/admin/analytics' },
     { icon: Briefcase, label: 'Portfolio', href: '/admin/portfolio', active: location.pathname === '/admin/portfolio' },
     { icon: Mail, label: 'Contact', href: '/admin/contact', active: location.pathname === '/admin/contact' },
@@ -37,8 +35,6 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
     switch (location.pathname) {
       case '/admin':
         return 'Service Inquiries Dashboard';
-      case '/admin/users':
-        return 'Admin Users Management';
       case '/admin/analytics':
         return 'User Analytics';
       case '/admin/portfolio':
@@ -64,7 +60,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
           <div className="flex items-center justify-between">
             {!sidebarCollapsed && (
               <Link to="/" className="text-xl font-bold tracking-wider text-text-primary hover:text-accent-primary transition-colors duration-300">
-                SCALIXITY
+                Portfolio Admin
               </Link>
             )}
             <button

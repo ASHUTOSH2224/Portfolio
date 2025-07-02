@@ -37,10 +37,10 @@ const PortfolioManagement: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([
     {
       id: '1',
-      title: 'Scalixity Website',
+      title: 'AI Business Platform',
       description: 'Real-time AI business platform that helps companies automate workflows and make data-driven decisions.',
       technologies: ['React', 'TypeScript', 'FastAPI', 'TensorFlow', 'Redis', 'PostgreSQL'],
-      liveUrl: 'https://scalixity.com',
+      liveUrl: '#',
       githubUrl: 'https://github.com/ASHUTOSH2224',
       featured: true
     },
@@ -230,7 +230,7 @@ const PortfolioManagement: React.FC = () => {
               <input
                 type="text"
                 className="w-full px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
-                defaultValue="Scalixity"
+                defaultValue="Freelance / Remote"
               />
             </div>
           </div>
