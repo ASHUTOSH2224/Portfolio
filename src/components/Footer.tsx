@@ -9,44 +9,48 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-matteBlack-800 border-t border-surface-border relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 matrix-bg opacity-10"></div>
+      <div className="absolute top-0 left-1/3 w-64 h-64 bg-accent-primary/2 rounded-full blur-3xl animate-float"></div>
+      
+      <div className="container-max relative z-10 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Brand */}
-          <div>
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">
+          <div className="animate-fade-in-left">
+            <div className="text-2xl font-bold bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent mb-2">
               Ashutosh
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-text-muted text-sm">
               Full Stack Developer & AI Engineer
             </p>
           </div>
 
           {/* Copyright */}
-          <div className="text-center">
-            <p className="text-gray-400 text-sm flex items-center justify-center">
-              Made with <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" /> by Ashutosh
+          <div className="text-center animate-fade-in-up">
+            <p className="text-text-muted text-sm flex items-center justify-center">
+              Made with <Heart className="w-4 h-4 text-accent-secondary mx-1 animate-pulse" fill="currentColor" /> by Ashutosh
             </p>
-            <p className="text-gray-500 text-xs mt-1">
+            <p className="text-text-muted-dark text-xs mt-1">
               © {currentYear} All rights reserved.
             </p>
           </div>
 
           {/* Back to Top */}
-          <div className="flex justify-end">
+          <div className="flex justify-end animate-fade-in-right">
             <button
               onClick={scrollToTop}
-              className="flex items-center space-x-2 px-4 py-2 bg-gray-800/50 border border-gray-700 text-gray-300 rounded-lg hover:border-blue-500 hover:text-blue-400 transition-all duration-200 transform hover:scale-105"
+              className="flex items-center space-x-2 px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:border-accent-primary/50 hover:text-accent-primary transition-all duration-300 transform hover:scale-105 group hover-glow"
             >
-              <ArrowUp size={16} />
+              <ArrowUp size={16} className="group-hover:animate-bounce" />
               <span className="text-sm">Back to Top</span>
             </button>
           </div>
         </div>
 
         {/* Bottom Border */}
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p className="text-gray-500 text-xs">
+        <div className="mt-8 pt-8 border-t border-surface-border text-center animate-fade-in-up delay-300">
+          <p className="text-text-muted-dark text-xs">
             This portfolio showcases my passion for creating innovative solutions through code.
           </p>
         </div>

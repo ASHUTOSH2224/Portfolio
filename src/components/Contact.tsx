@@ -28,28 +28,28 @@ const Contact: React.FC = () => {
       label: 'Email',
       value: 'ashutosh@example.com',
       href: 'mailto:ashutosh@example.com',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-accent-primary to-accent-secondary'
     },
     {
       icon: Phone,
       label: 'Phone',
       value: '+91 9876543210',
       href: 'tel:+919876543210',
-      color: 'from-green-500 to-emerald-500'
+      color: 'from-accent-secondary to-accent-tertiary'
     },
     {
       icon: MapPin,
       label: 'Location',
       value: 'Remote, India',
       href: '#',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-accent-tertiary to-accent-primary'
     },
     {
       icon: Calendar,
       label: 'Availability',
       value: 'Open to opportunities',
       href: '#',
-      color: 'from-orange-500 to-red-500'
+      color: 'from-accent-primary to-accent-tertiary'
     }
   ];
 
@@ -59,62 +59,67 @@ const Contact: React.FC = () => {
       icon: Linkedin,
       href: '#',
       username: '@ashutosh-dev',
-      color: 'hover:border-blue-500 hover:text-blue-400'
+      color: 'hover:border-accent-primary/50 hover:text-accent-primary'
     },
     {
       name: 'GitHub',
       icon: Github,
       href: '#',
       username: '@ashutosh-dev',
-      color: 'hover:border-purple-500 hover:text-purple-400'
+      color: 'hover:border-accent-secondary/50 hover:text-accent-secondary'
     },
     {
       name: 'LeetCode',
       icon: ExternalLink,
       href: '#',
       username: '@ashutosh_dev',
-      color: 'hover:border-yellow-500 hover:text-yellow-400'
+      color: 'hover:border-accent-tertiary/50 hover:text-accent-tertiary'
     },
     {
       name: 'Fiverr',
       icon: ExternalLink,
       href: '#',
       username: '@ashutosh_pro',
-      color: 'hover:border-green-500 hover:text-green-400'
+      color: 'hover:border-accent-primary/50 hover:text-accent-primary'
     },
     {
       name: 'Upwork',
       icon: ExternalLink,
       href: '#',
       username: '@ashutosh_fullstack',
-      color: 'hover:border-emerald-500 hover:text-emerald-400'
+      color: 'hover:border-accent-secondary/50 hover:text-accent-secondary'
     }
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+    <section id="contact" className="py-20 bg-matteBlack-800 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 matrix-bg opacity-15"></div>
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-accent-primary/3 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent-secondary/2 rounded-full blur-3xl animate-float delay-300"></div>
+      
+      <div className="container-max relative z-10">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
             Let's Work Together
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-text-muted max-w-3xl mx-auto">
             Ready to bring your ideas to life? I'm available for freelance projects, full-time opportunities, and consulting.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8">
-            <h3 className="text-2xl font-semibold text-white mb-6 flex items-center">
-              <MessageCircle className="w-6 h-6 text-blue-400 mr-3" />
+          <div className="glass-effect border border-surface-border rounded-2xl p-8 hover-glow transition-all duration-300 animate-fade-in-left">
+            <h3 className="text-2xl font-semibold text-text-primary mb-6 flex items-center">
+              <MessageCircle className="w-6 h-6 text-accent-primary mr-3" />
               Send Message
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
                     Name
                   </label>
                   <input
@@ -123,13 +128,13 @@ const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
                     placeholder="Your name"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
                     Email
                   </label>
                   <input
@@ -138,7 +143,7 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
                     placeholder="your.email@example.com"
                     required
                   />
@@ -146,7 +151,7 @@ const Contact: React.FC = () => {
               </div>
               
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-text-secondary mb-2">
                   Subject
                 </label>
                 <input
@@ -155,14 +160,14 @@ const Contact: React.FC = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
                   placeholder="Project inquiry, collaboration, etc."
                   required
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
                   Message
                 </label>
                 <textarea
@@ -171,7 +176,7 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300 resize-none"
                   placeholder="Tell me about your project or how I can help you..."
                   required
                 ></textarea>
@@ -179,31 +184,32 @@ const Contact: React.FC = () => {
               
               <button
                 type="submit"
-                className="w-full flex items-center justify-center space-x-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                className="w-full flex items-center justify-center space-x-2 px-8 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden"
               >
-                <Send size={20} />
-                <span>Send Message</span>
+                <Send size={20} className="group-hover:animate-bounce" />
+                <span className="relative z-10">Send Message</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </button>
             </form>
           </div>
 
           {/* Contact Info & Social Links */}
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in-right">
             {/* Contact Information */}
-            <div className="bg-gradient-to-br from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-6">Contact Information</h3>
+            <div className="glass-effect border border-surface-border rounded-2xl p-8 hover-glow transition-all duration-300">
+              <h3 className="text-2xl font-semibold text-text-primary mb-6">Contact Information</h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <a
                     key={index}
                     href={info.href}
-                    className="flex items-center space-x-4 text-gray-300 hover:text-white transition-colors duration-200 group"
+                    className="flex items-center space-x-4 text-text-secondary hover:text-text-primary transition-colors duration-300 group"
                   >
-                    <div className={`p-3 bg-gradient-to-r ${info.color} rounded-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`p-3 bg-gradient-to-r ${info.color} rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-glow-sm`}>
                       <info.icon className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <div className="text-sm text-gray-400">{info.label}</div>
+                      <div className="text-sm text-text-muted">{info.label}</div>
                       <div className="font-medium">{info.value}</div>
                     </div>
                   </a>
@@ -212,23 +218,23 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Professional Platforms */}
-            <div className="bg-gradient-to-br from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold text-white mb-6">Find Me On</h3>
+            <div className="glass-effect border border-surface-border rounded-2xl p-8 hover-glow transition-all duration-300">
+              <h3 className="text-2xl font-semibold text-text-primary mb-6">Find Me On</h3>
               <div className="space-y-4">
                 {platforms.map((platform, index) => (
                   <a
                     key={index}
                     href={platform.href}
-                    className={`flex items-center justify-between p-4 bg-gray-800/50 border border-gray-600 rounded-lg ${platform.color} transition-all duration-200 transform hover:scale-105`}
+                    className={`flex items-center justify-between p-4 glass-effect border border-surface-border rounded-lg ${platform.color} transition-all duration-300 transform hover:scale-105 group`}
                   >
                     <div className="flex items-center space-x-3">
-                      <platform.icon className="w-5 h-5" />
+                      <platform.icon className="w-5 h-5 group-hover:animate-bounce" />
                       <div>
                         <div className="font-medium">{platform.name}</div>
-                        <div className="text-sm text-gray-400">{platform.username}</div>
+                        <div className="text-sm text-text-muted">{platform.username}</div>
                       </div>
                     </div>
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4 group-hover:animate-bounce" />
                   </a>
                 ))}
               </div>
@@ -236,12 +242,13 @@ const Contact: React.FC = () => {
 
             {/* Quick Actions */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <button className="flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
-                <Calendar size={20} />
-                <span>Schedule Call</span>
+              <button className="flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
+                <Calendar size={20} className="group-hover:animate-bounce" />
+                <span className="relative z-10">Schedule Call</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               </button>
-              <button className="flex items-center justify-center space-x-2 px-6 py-4 border-2 border-gray-600 text-gray-300 font-semibold rounded-lg hover:border-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
-                <ExternalLink size={20} />
+              <button className="flex items-center justify-center space-x-2 px-6 py-4 border-2 border-accent-primary/40 text-accent-primary font-semibold rounded-lg hover:border-accent-primary hover:bg-accent-primary/5 transition-all duration-300 transform hover:scale-105 group">
+                <ExternalLink size={20} className="group-hover:animate-bounce" />
                 <span>View Resume</span>
               </button>
             </div>
