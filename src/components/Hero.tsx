@@ -10,129 +10,126 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-matteBlack-500 relative overflow-hidden">
-      {/* Dynamic Background Effects */}
-      <div className="absolute inset-0 matrix-bg"></div>
-      <div className="absolute inset-0 bg-gradient-radial from-accent-primary/10 via-transparent to-transparent animate-pulse"></div>
+    <section className="min-h-screen flex items-center justify-center bg-matteBlack-800 relative overflow-hidden">
+      {/* Refined Background Effects */}
+      <div className="absolute inset-0 matrix-bg opacity-30"></div>
+      <div className="absolute inset-0 bg-gradient-radial from-accent-primary/8 via-transparent to-transparent animate-pulse-slow"></div>
       
-      {/* Floating Geometric Shapes */}
-      <div className="absolute top-20 left-10 w-20 h-20 border border-accent-primary/20 rounded-lg animate-rotate-slow"></div>
-      <div className="absolute top-40 right-20 w-16 h-16 bg-accent-purple/10 rounded-full animate-float delay-200"></div>
-      <div className="absolute bottom-40 left-20 w-12 h-12 border-2 border-accent-secondary/30 rotate-45 animate-float delay-400"></div>
-      <div className="absolute bottom-20 right-40 w-24 h-24 border border-accent-tertiary/20 rounded-full animate-rotate-slow"></div>
+      {/* Cleaner Geometric Shapes */}
+      <div className="absolute top-20 left-10 w-16 h-16 border border-accent-primary/20 rounded-lg animate-rotate-slow"></div>
+      <div className="absolute top-40 right-20 w-12 h-12 bg-accent-primary/10 rounded-full animate-float delay-200"></div>
+      <div className="absolute bottom-40 left-20 w-8 h-8 border border-accent-secondary/30 rotate-45 animate-float delay-400"></div>
+      <div className="absolute bottom-20 right-40 w-20 h-20 border border-accent-tertiary/15 rounded-full animate-rotate-slow"></div>
 
       <div className="container-max relative z-10">
         <div className="text-center animate-fade-in-up">
-          {/* Animated Status Badge */}
-          <div className="inline-flex items-center space-x-2 glass-effect rounded-full px-6 py-3 mb-8 animate-fade-in-down delay-200 hover-glow">
-            <Zap className="w-4 h-4 text-accent-gold animate-pulse" />
-            <span className="text-sm text-white/90 font-medium">Available for Remote Work</span>
-            <div className="w-2 h-2 bg-accent-tertiary rounded-full animate-pulse"></div>
+          {/* Refined Status Badge */}
+          <div className="inline-flex items-center space-x-2 glass-effect rounded-full px-6 py-3 mb-8 animate-fade-in-down delay-200 hover-glow border border-surface-border">
+            <Zap className="w-4 h-4 text-accent-primary animate-pulse" />
+            <span className="text-sm text-text-secondary font-medium">Available for Remote Work</span>
+            <div className="w-2 h-2 bg-accent-primary rounded-full animate-pulse"></div>
           </div>
 
-          {/* Main Title with Enhanced Creative Effects */}
+          {/* Enhanced Main Title */}
           <div className="relative mb-6 animate-fade-in-up delay-300">
             <h1 className="text-6xl md:text-8xl font-black relative">
-              {/* Main gradient text */}
-              <span className="relative z-10 bg-gradient-to-r from-white via-accent-primary via-accent-purple to-accent-secondary bg-clip-text text-transparent animate-gradient-shift">
+              {/* Main gradient text with refined colors */}
+              <span className="relative z-10 bg-gradient-to-r from-white via-accent-primary to-accent-secondary bg-clip-text text-transparent animate-gradient-shift">
                 Ashutosh
               </span>
               
-              {/* Multiple glow layers for depth */}
-              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-white blur-sm opacity-60">
+              {/* Refined glow layers */}
+              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-white blur-sm opacity-50">
                 Ashutosh
               </span>
-              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-accent-primary blur-md opacity-40">
+              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-accent-primary blur-md opacity-30">
                 Ashutosh
               </span>
-              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-accent-purple blur-lg opacity-30">
-                Ashutosh
-              </span>
-              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-accent-secondary blur-xl opacity-20">
+              <span className="absolute inset-0 text-6xl md:text-8xl font-black text-accent-secondary blur-lg opacity-20">
                 Ashutosh
               </span>
               
-              {/* Animated particles around the text */}
-              <div className="absolute top-0 left-0 w-2 h-2 bg-accent-primary rounded-full animate-ping opacity-60"></div>
-              <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-accent-purple rounded-full animate-ping delay-300 opacity-80"></div>
-              <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-accent-secondary rounded-full animate-ping delay-500 opacity-70"></div>
-              <div className="absolute bottom-0 right-0 w-1 h-1 bg-accent-tertiary rounded-full animate-ping delay-700 opacity-60"></div>
+              {/* Refined particles */}
+              <div className="absolute top-0 left-0 w-1.5 h-1.5 bg-accent-primary rounded-full animate-ping opacity-60"></div>
+              <div className="absolute top-1/4 right-1/4 w-1 h-1 bg-accent-secondary rounded-full animate-ping delay-300 opacity-70"></div>
+              <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-accent-tertiary rounded-full animate-ping delay-500 opacity-60"></div>
+              <div className="absolute bottom-0 right-0 w-1 h-1 bg-accent-primary rounded-full animate-ping delay-700 opacity-50"></div>
               
-              {/* Holographic effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shine opacity-30"></div>
+              {/* Refined holographic effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-primary/10 to-transparent animate-shine opacity-20"></div>
             </h1>
             
-            {/* Floating geometric elements around name */}
-            <div className="absolute -top-8 -left-8 w-4 h-4 border border-accent-primary/40 rotate-45 animate-float opacity-60"></div>
-            <div className="absolute -top-4 right-1/4 w-3 h-3 bg-accent-purple/30 rounded-full animate-float delay-200"></div>
-            <div className="absolute -bottom-6 left-1/4 w-2 h-8 bg-gradient-to-b from-accent-secondary/40 to-transparent animate-float delay-400"></div>
-            <div className="absolute -bottom-4 -right-8 w-6 h-6 border-2 border-accent-tertiary/30 rounded-full animate-float delay-600"></div>
+            {/* Cleaner floating elements */}
+            <div className="absolute -top-6 -left-6 w-3 h-3 border border-accent-primary/30 rotate-45 animate-float opacity-40"></div>
+            <div className="absolute -top-3 right-1/4 w-2 h-2 bg-accent-secondary/20 rounded-full animate-float delay-200"></div>
+            <div className="absolute -bottom-4 left-1/4 w-1 h-6 bg-gradient-to-b from-accent-primary/20 to-transparent animate-float delay-400"></div>
+            <div className="absolute -bottom-3 -right-6 w-4 h-4 border border-accent-tertiary/20 rounded-full animate-float delay-600"></div>
           </div>
           
-          {/* Subtitle with Staggered Animation */}
-          <h2 className="text-2xl md:text-4xl font-semibold text-white/90 mb-6 animate-fade-in-up delay-500">
+          {/* Enhanced Subtitle */}
+          <h2 className="text-2xl md:text-4xl font-semibold text-text-secondary mb-6 animate-fade-in-up delay-500">
             Full Stack Developer & 
             <span className="text-accent-primary text-glow-sm"> AI Engineer</span>
           </h2>
           
-          {/* Description with Enhanced Styling */}
-          <p className="text-lg md:text-xl text-white/70 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-700">
+          {/* Refined Description */}
+          <p className="text-lg md:text-xl text-text-muted mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-700">
             Head of Software Architecture at{' '}
-            <span className="text-accent-primary font-semibold hover:text-glow-sm transition-all duration-300 cursor-pointer">Scalixity</span>, 
+            <span className="text-accent-primary font-semibold hover:text-accent-secondary transition-all duration-300 cursor-pointer">Scalixity</span>, 
             specializing in intelligent web applications, machine learning solutions, 
             and scalable architectures that drive business growth.
           </p>
 
-          {/* Enhanced CTA Buttons */}
+          {/* Refined CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-16 animate-fade-in-up delay-900">
-            <button className="btn-primary group shadow-glow hover:shadow-glow-xl">
+            <button className="px-8 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
               <span className="relative z-10">View My Projects</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-accent-primary to-accent-purple rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-shine"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </button>
-            <button className="btn-secondary group neon-border">
+            <button className="px-8 py-4 border-2 border-accent-primary/40 text-accent-primary font-semibold rounded-lg hover:border-accent-primary hover:bg-accent-primary/5 transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
               <span className="relative z-10">Download Resume</span>
-              <div className="absolute inset-0 bg-accent-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-accent-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
 
-          {/* Enhanced Social Links Grid */}
+          {/* Refined Social Links */}
           <div className="flex justify-center space-x-6 mb-16 animate-fade-in-up delay-1000">
             {socialLinks.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
-                className="group relative p-4 glass-effect rounded-xl text-white/70 hover:text-accent-primary transition-all duration-300 transform hover:scale-110 hover-glow"
+                className="group relative p-4 glass-effect rounded-xl text-text-muted hover:text-accent-primary transition-all duration-300 transform hover:scale-110 hover-glow border border-surface-border hover:border-accent-primary/30"
                 aria-label={social.label}
               >
                 <social.icon size={24} className="relative z-10 group-hover:animate-bounce" />
-                <div className="absolute inset-0 bg-accent-primary/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-accent-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                {/* Tooltip */}
-                <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-matteBlack-100 text-white text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                {/* Refined Tooltip */}
+                <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-surface-tertiary text-text-secondary text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none border border-surface-border">
                   {social.label}
                 </span>
               </a>
             ))}
           </div>
 
-          {/* Scroll Indicator with Enhanced Animation */}
+          {/* Refined Scroll Indicator */}
           <div className="animate-fade-in delay-1200">
-            <p className="text-white/50 text-sm mb-4 animate-pulse">Scroll to explore</p>
+            <p className="text-text-muted text-sm mb-4 animate-pulse">Scroll to explore</p>
             <div className="flex justify-center">
-              <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center animate-bounce hover:border-accent-primary transition-colors duration-300 cursor-pointer group">
-                <ChevronDown className="w-4 h-4 text-white/50 mt-2 group-hover:text-accent-primary transition-colors duration-300" />
+              <div className="w-8 h-12 border-2 border-surface-border-light rounded-full flex justify-center animate-bounce hover:border-accent-primary transition-colors duration-300 cursor-pointer group">
+                <ChevronDown className="w-4 h-4 text-text-muted mt-2 group-hover:text-accent-primary transition-colors duration-300" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Particle Effect Overlay */}
+      {/* Refined Particle Effect */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-accent-primary/30 rounded-full animate-matrix-rain"
+            className="absolute w-0.5 h-0.5 bg-accent-primary/40 rounded-full animate-matrix-rain"
             style={{
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 10}s`,

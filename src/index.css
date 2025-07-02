@@ -116,17 +116,17 @@ body {
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple), var(--accent-secondary));
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-blue), var(--accent-secondary));
     background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientShift 4s ease-in-out infinite;
+    animation: gradientShift 6s ease-in-out infinite;
   }
   
   .animate-gradient-shift {
     background-size: 400% 400%;
-    animation: gradientShift 6s ease-in-out infinite;
+    animation: gradientShift 8s ease-in-out infinite;
   }
   
   .neon-border {

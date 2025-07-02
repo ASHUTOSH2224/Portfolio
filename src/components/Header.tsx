@@ -32,30 +32,30 @@ const Header: React.FC = () => {
           {/* Enhanced Creative Logo */}
           <div className="relative group cursor-pointer">
             <div className="text-3xl font-black relative">
-              {/* Main text with multiple glow layers */}
-              <span className="relative z-10 bg-gradient-to-r from-white via-accent-primary to-accent-purple bg-clip-text text-transparent">
+              {/* Main text with refined gradient */}
+              <span className="relative z-10 bg-gradient-to-r from-white via-accent-primary to-accent-secondary bg-clip-text text-transparent">
                 Ashutosh
               </span>
               
-              {/* Glow effects */}
-              <span className="absolute inset-0 text-3xl font-black text-white blur-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Refined glow effects */}
+              <span className="absolute inset-0 text-3xl font-black text-white blur-sm opacity-60 group-hover:opacity-80 transition-opacity duration-300">
                 Ashutosh
               </span>
-              <span className="absolute inset-0 text-3xl font-black text-accent-primary blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-300">
+              <span className="absolute inset-0 text-3xl font-black text-accent-primary blur-md opacity-40 group-hover:opacity-60 transition-opacity duration-300">
                 Ashutosh
               </span>
-              <span className="absolute inset-0 text-3xl font-black text-accent-purple blur-lg opacity-30 group-hover:opacity-60 transition-opacity duration-300">
+              <span className="absolute inset-0 text-3xl font-black text-accent-secondary blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-300">
                 Ashutosh
               </span>
               
-              {/* Animated underline */}
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-purple group-hover:w-full transition-all duration-500"></div>
+              {/* Refined animated underline */}
+              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-primary to-accent-secondary group-hover:w-full transition-all duration-500"></div>
             </div>
             
-            {/* Floating particles around logo */}
+            {/* Refined floating particles */}
             <div className="absolute -top-2 -left-2 w-1 h-1 bg-accent-primary rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>
-            <div className="absolute -top-1 right-0 w-1 h-1 bg-accent-purple rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-150 transition-opacity duration-300"></div>
-            <div className="absolute -bottom-2 left-1/3 w-1 h-1 bg-accent-secondary rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-300 transition-opacity duration-300"></div>
+            <div className="absolute -top-1 right-0 w-1 h-1 bg-accent-secondary rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-150 transition-opacity duration-300"></div>
+            <div className="absolute -bottom-2 left-1/3 w-1 h-1 bg-accent-tertiary rounded-full opacity-0 group-hover:opacity-100 animate-ping delay-300 transition-opacity duration-300"></div>
           </div>
 
           {/* Center Navigation - Clean Design */}
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
               <Download size={16} className="group-hover:animate-bounce" />
               <span className="font-medium">Resume</span>
             </button>
-            <button className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-primary to-accent-purple text-white font-medium rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
+            <button className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-medium rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
               <span className="relative z-10">Hire Me</span>
               <ExternalLink size={16} className="relative z-10 group-hover:animate-bounce" />
               {/* Animated shine effect */}
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                   <Download size={16} className="group-hover:animate-bounce" />
                   <span className="font-medium">Resume</span>
                 </button>
-                <button className="flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-accent-primary to-accent-purple text-white font-medium rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
+                <button className="flex items-center justify-center space-x-2 px-6 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-medium rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
                   <span className="relative z-10">Hire Me</span>
                   <ExternalLink size={16} className="relative z-10 group-hover:animate-bounce" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
