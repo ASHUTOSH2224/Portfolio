@@ -3,10 +3,10 @@ import { Github, Linkedin, Mail, Code, Zap, ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:ashutosh@example.com', label: 'Email' },
-    { icon: Code, href: '#', label: 'LeetCode' },
+    { icon: Github, href: 'https://github.com/ASHUTOSH2224', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/ashutosh-singh-4b9a93230/', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:2224ashutosh@gmail.com', label: 'Email' },
+    { icon: Code, href: 'https://leetcode.com/u/mr_ashu/', label: 'LeetCode' },
   ];
 
   return (

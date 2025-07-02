@@ -12,7 +12,7 @@ const Projects: React.FC = () => {
       bgGradient: 'from-accent-primary/10 to-accent-secondary/5',
       borderColor: 'border-accent-primary/30',
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/ASHUTOSH2224'
     },
     {
       title: 'Email Marketing Automation',
@@ -23,7 +23,7 @@ const Projects: React.FC = () => {
       bgGradient: 'from-accent-secondary/10 to-accent-tertiary/5',
       borderColor: 'border-accent-secondary/30',
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/ASHUTOSH2224'
     },
     {
       title: 'Nakshatra Gyan',
@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
       bgGradient: 'from-accent-tertiary/10 to-accent-primary/5',
       borderColor: 'border-accent-tertiary/30',
       liveUrl: '#',
-      githubUrl: '#'
+      githubUrl: 'https://github.com/ASHUTOSH2224'
     }
   ];
 
@@ -111,10 +111,15 @@ const Projects: React.FC = () => {
 
         {/* View More Projects */}
         <div className="text-center mt-12 animate-fade-in-up delay-600">
-          <button className="px-8 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
+          <a 
+            href="https://github.com/ASHUTOSH2224"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden"
+          >
             <span className="relative z-10">View All Projects on GitHub</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          </button>
+          </a>
         </div>
       </div>
     </section>
