@@ -4,70 +4,110 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+        // Light theme grays
+        light: {
+          50: '#ffffff',
+          100: '#f9fafb',
+          200: '#f3f4f6',
+          300: '#e5e7eb',
+          400: '#d1d5db',
+          500: '#9ca3af',
+          600: '#6b7280',
+          700: '#4b5563',
+          800: '#374151',
+          900: '#1f2937',
+          950: '#111827',
         },
-        matteBlack: {
-          50: '#1a1a1a',
-          100: '#161616',
-          200: '#121212',
-          300: '#0e0e0e',
-          400: '#0a0a0a',
-          500: '#060606',
-          600: '#030303',
-          700: '#010101',
-          800: '#000000',
-          900: '#000000',
-        },
+        // Orange primary colors
         primary: {
-          50: '#ecfeff',
-          100: '#cffafe',
-          200: '#a5f3fc',
-          300: '#67e8f9',
-          400: '#22d3ee',
-          500: '#06b6d4',
-          600: '#0891b2',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316', // Main orange
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
         },
+        // Updated accent colors for light theme
         accent: {
-          primary: '#22d3ee',    // Cyan
-          secondary: '#06b6d4',  // Darker cyan
-          tertiary: '#0891b2',   // Deep cyan
-          blue: '#3b82f6',       // Blue
-          purple: '#8b5cf6',     // Purple
-          emerald: '#10b981',    // Emerald
-          amber: '#f59e0b',      // Amber
+          primary: '#f97316',    // Orange primary
+          secondary: '#8b5cf6',  // Purple accent
+          tertiary: '#06b6d4',   // Cyan accent
+          coral: '#ff6b6b',      // Coral accent
+          purple: '#8b5cf6',     // Purple accent
+          cyan: '#06b6d4',       // Cyan accent
+          emerald: '#10b981',    // Success green
+          amber: '#f59e0b',      // Warning amber
+          terminal: '#f97316',   // Orange terminal
+          vscode: '#007acc',     // Keep VS Code blue for syntax
+          github: '#24292e',     // GitHub dark
+          typescript: '#3178c6', // TypeScript blue
+          javascript: '#f7df1e', // JavaScript yellow
+          react: '#61dafb',      // React cyan
+          node: '#8cc84b',       // Node.js green
+          python: '#3776ab',     // Python blue
+          git: '#f05032',        // Git orange
+          docker: '#2496ed',     // Docker blue
+          aws: '#ff9900',        // AWS orange
+          mongodb: '#47a248',    // MongoDB green
         },
+        // Light theme surfaces
         surface: {
-          primary: '#0a0a0a',
-          secondary: '#141414',
-          tertiary: '#1a1a1a',
-          border: '#262626',
-          'border-light': '#404040',
-        },
-        text: {
           primary: '#ffffff',
-          secondary: '#e5e5e5',
-          muted: '#a3a3a3',
-          'muted-dark': '#737373',
+          secondary: '#f9fafb',
+          tertiary: '#f3f4f6',
+          border: '#e5e7eb',
+          'border-light': '#d1d5db',
+          card: '#ffffff',
+          hover: '#f9fafb',
+          elevated: '#ffffff',
+          accent: '#fff7ed',
         },
+        // Light theme text colors
+        text: {
+          primary: '#1f2937',
+          secondary: '#374151',
+          muted: '#6b7280',
+          'muted-dark': '#9ca3af',
+          terminal: '#f97316',
+          syntax: '#007acc',
+          comment: '#6b7280',
+          string: '#059669',
+          keyword: '#7c3aed',
+          number: '#dc2626',
+        },
+        // Light theme glow effects
         glow: {
-          blue: '#00d4ff',
-          purple: '#a855f7',
-          pink: '#ec4899',
-          green: '#10b981',
+          orange: '#f97316',
+          purple: '#8b5cf6',
+          cyan: '#06b6d4',
+          coral: '#ff6b6b',
+          terminal: '#f97316',
+          primary: '#f97316',
+        },
+        // Light theme terminal colors
+        terminal: {
+          bg: '#ffffff',
+          text: '#1f2937',
+          bright: '#000000',
+          orange: '#f97316',
+          blue: '#007acc',
+          yellow: '#f59e0b',
+          red: '#dc2626',
+          purple: '#8b5cf6',
+          cyan: '#06b6d4',
+        },
+        // Light theme editor colors
+        editor: {
+          bg: '#ffffff',
+          sidebar: '#f9fafb',
+          selection: '#fef3c7',
+          cursor: '#f97316',
+          line: '#f3f4f6',
+          gutter: '#6b7280',
         }
       },
       fontFamily: {
@@ -128,10 +168,10 @@ export default {
         },
         glowPulse: {
           '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(34, 211, 238, 0.3), 0 0 40px rgba(34, 211, 238, 0.1)' 
+            boxShadow: '0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(249, 115, 22, 0.1)' 
           },
           '50%': { 
-            boxShadow: '0 0 30px rgba(34, 211, 238, 0.5), 0 0 60px rgba(34, 211, 238, 0.2)' 
+            boxShadow: '0 0 30px rgba(249, 115, 22, 0.5), 0 0 60px rgba(249, 115, 22, 0.2)' 
           },
         },
         pulseSlow: {
@@ -178,17 +218,17 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'grid-pattern': 'linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px)',
+        'grid-pattern': 'linear-gradient(rgba(249, 115, 22, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(249, 115, 22, 0.1) 1px, transparent 1px)',
       },
       boxShadow: {
-        'glow-sm': '0 0 10px rgba(34, 211, 238, 0.3)',
-        'glow': '0 0 20px rgba(34, 211, 238, 0.4)',
-        'glow-lg': '0 0 30px rgba(34, 211, 238, 0.5)',
-        'glow-xl': '0 0 40px rgba(34, 211, 238, 0.6)',
-        'glow-cyan': '0 0 20px rgba(34, 211, 238, 0.4), 0 0 40px rgba(34, 211, 238, 0.2)',
-        'inner-glow': 'inset 0 0 20px rgba(34, 211, 238, 0.1)',
+        'glow-sm': '0 0 10px rgba(249, 115, 22, 0.3)',
+        'glow': '0 0 20px rgba(249, 115, 22, 0.4)',
+        'glow-lg': '0 0 30px rgba(249, 115, 22, 0.5)',
+        'glow-xl': '0 0 40px rgba(249, 115, 22, 0.6)',
+        'glow-orange': '0 0 20px rgba(249, 115, 22, 0.4), 0 0 40px rgba(249, 115, 22, 0.2)',
+        'inner-glow': 'inset 0 0 20px rgba(249, 115, 22, 0.1)',
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 20px rgba(34, 211, 238, 0.3)',
+        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 20px rgba(249, 115, 22, 0.3)',
       },
     },
   },

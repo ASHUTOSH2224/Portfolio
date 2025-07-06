@@ -14,23 +14,23 @@ const Certifications: React.FC = () => {
       color: 'from-accent-primary to-accent-secondary'
     },
     {
-      title: 'TensorFlow Developer Certificate',
-      issuer: 'Google',
-      date: '2023',
-      credentialId: 'TF-DEV-2023',
-      verifyUrl: '#',
-      status: 'Active',
-      description: 'Proficiency in building and deploying ML models with TensorFlow',
-      color: 'from-accent-secondary to-accent-tertiary'
-    },
-    {
-      title: 'Meta React Developer Professional',
+      title: 'React Developer Certificate',
       issuer: 'Meta (Facebook)',
-      date: '2022',
-      credentialId: 'META-REACT-2022',
+      date: '2023',
+      credentialId: 'META-REACT-2023',
       verifyUrl: '#',
       status: 'Active',
       description: 'Advanced React development and modern frontend practices',
+      color: 'from-accent-secondary to-accent-tertiary'
+    },
+    {
+      title: 'TypeScript Professional',
+      issuer: 'Microsoft',
+      date: '2022',
+      credentialId: 'TS-PRO-2022',
+      verifyUrl: '#',
+      status: 'Active',
+      description: 'Type-safe JavaScript development and advanced TypeScript features',
       color: 'from-accent-tertiary to-accent-primary'
     },
     {
@@ -54,25 +54,25 @@ const Certifications: React.FC = () => {
       color: 'from-accent-secondary to-accent-primary'
     },
     {
-      title: 'Python Institute PCPP1',
-      issuer: 'Python Institute',
+      title: 'JavaScript Algorithms & Data Structures',
+      issuer: 'freeCodeCamp',
       date: '2021',
-      credentialId: 'PCPP1-2021',
+      credentialId: 'FCC-JS-2021',
       verifyUrl: '#',
       status: 'Active',
-      description: 'Professional Python programming certification',
+      description: 'Advanced JavaScript programming and algorithmic thinking',
       color: 'from-accent-tertiary to-accent-secondary'
     }
   ];
 
   return (
-    <section id="certifications" className="py-20 bg-matteBlack-800 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 matrix-bg opacity-20"></div>
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-accent-primary/3 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-accent-secondary/2 rounded-full blur-3xl animate-float delay-400"></div>
+    <section id="certifications" className="py-20 bg-surface-primary relative overflow-hidden">
+      {/* Light Theme Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-surface-accent/20 via-surface-secondary/10 to-surface-accent/20"></div>
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-accent-primary/8 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-accent-secondary/6 rounded-full blur-3xl animate-float delay-400"></div>
       
-      <div className="container-max relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
             Certifications
@@ -86,12 +86,12 @@ const Certifications: React.FC = () => {
           {certifications.map((cert, index) => (
             <div
               key={index}
-              className="group glass-effect border border-surface-border rounded-2xl p-6 hover:scale-105 transition-all duration-300 hover-glow hover:border-accent-primary/30 animate-fade-in-up"
+              className="group bg-surface-card border border-surface-border rounded-2xl p-6 hover:scale-105 transition-all duration-300 shadow-card hover:shadow-glow-orange hover:border-accent-primary/30 animate-fade-in-up"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Certification Header */}
               <div className="flex items-start justify-between mb-4">
-                <div className={`p-3 bg-gradient-to-r ${cert.color} rounded-lg group-hover:scale-110 transition-transform duration-300 shadow-glow-sm`}>
+                <div className={`p-3 bg-gradient-to-r ${cert.color} rounded-lg group-hover:scale-110 transition-transform duration-300 glow-orange`}>
                   <Award className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex items-center space-x-2">
@@ -125,7 +125,7 @@ const Certifications: React.FC = () => {
               {/* Verify Button */}
               <a
                 href={cert.verifyUrl}
-                className="flex items-center justify-center space-x-2 w-full px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:border-accent-primary/50 hover:text-accent-primary transition-all duration-300 transform hover:scale-105 group"
+                className="flex items-center justify-center space-x-2 w-full px-4 py-2 bg-surface-secondary border border-surface-border text-text-muted rounded-lg hover:border-accent-primary/50 hover:text-accent-primary transition-all duration-300 transform hover:scale-105 group"
               >
                 <ExternalLink size={16} className="group-hover:animate-bounce" />
                 <span>Verify Certificate</span>
@@ -136,20 +136,20 @@ const Certifications: React.FC = () => {
 
         {/* Continuous Learning */}
         <div className="mt-16 text-center animate-fade-in-up delay-800">
-          <div className="glass-effect border border-surface-border rounded-2xl p-8 max-w-4xl mx-auto hover-glow transition-all duration-300">
+          <div className="bg-surface-card border border-surface-border rounded-2xl p-8 max-w-4xl mx-auto shadow-card hover:shadow-glow-orange transition-all duration-300">
             <h3 className="text-2xl font-semibold text-text-primary mb-4 flex items-center justify-center">
               <Award className="w-6 h-6 text-accent-primary mr-3" />
               Continuous Learning Journey
             </h3>
             <p className="text-text-secondary leading-relaxed mb-6">
               I believe in continuous improvement and staying updated with the latest technologies. 
-              Currently pursuing advanced certifications in Kubernetes, AI/ML Engineering, and Cloud Security.
+              Currently pursuing advanced certifications in cloud computing, advanced React patterns, and modern development practices.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {['Kubernetes CKA', 'AWS ML Specialty', 'Google Cloud AI', 'Azure DevOps'].map((upcoming, index) => (
+              {['Advanced React', 'Cloud Architecture', 'System Design', 'DevOps'].map((upcoming, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 glass-effect border border-accent-primary/30 text-accent-primary rounded-full text-sm animate-fade-in"
+                  className="px-4 py-2 bg-surface-secondary border border-accent-primary/30 text-accent-primary rounded-full text-sm animate-fade-in"
                   style={{ animationDelay: `${(index * 100) + 1000}ms` }}
                 >
                   {upcoming} (In Progress)

@@ -1,57 +1,105 @@
 import React from 'react';
-import { ExternalLink, Github, Zap, Shield, Mail } from 'lucide-react';
+import { ExternalLink, Github, Zap, Shield, Mail, FileText, Play } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projects = [
     {
       title: 'Scalixity Website',
-      description: 'Real-time AI business platform that helps companies automate workflows and make data-driven decisions.',
+      description: 'Real-time AI business platform that helps companies automate workflows and make data-driven decisions using advanced machine learning algorithms.',
+      longDescription: 'A comprehensive business intelligence platform featuring real-time analytics, automated workflow management, and ML-powered insights for data-driven decision making.',
       tech: ['React', 'TypeScript', 'FastAPI', 'TensorFlow', 'Redis', 'PostgreSQL'],
       icon: Zap,
       gradient: 'from-accent-primary to-accent-secondary',
       bgGradient: 'from-accent-primary/10 to-accent-secondary/5',
       borderColor: 'border-accent-primary/30',
+      codeSnippet: `const analyzeData = async (data) => {
+  const result = await aiModel.predict(data);
+  return processInsights(result);
+};`,
       liveUrl: '#',
-      githubUrl: 'https://github.com/ASHUTOSH2224'
+      githubUrl: 'https://github.com/ASHUTOSH2224',
+      category: 'AI/ML'
     },
     {
       title: 'Email Marketing Automation',
-      description: 'ML + LLM powered marketing system that personalizes campaigns and optimizes engagement rates.',
+      description: 'ML + LLM powered marketing system that personalizes campaigns and optimizes engagement rates through intelligent content generation.',
+      longDescription: 'Advanced email marketing platform leveraging GPT models and machine learning for personalized campaign creation, audience segmentation, and performance optimization.',
       tech: ['Python', 'FastAPI', 'OpenAI GPT', 'scikit-learn', 'React', 'MongoDB'],
       icon: Mail,
       gradient: 'from-accent-secondary to-accent-tertiary',
       bgGradient: 'from-accent-secondary/10 to-accent-tertiary/5',
       borderColor: 'border-accent-secondary/30',
+      codeSnippet: `def generate_personalized_content(user_profile):
+    prompt = f"Generate email for {user_profile}"
+    return openai.Completion.create(prompt=prompt)`,
       liveUrl: '#',
-      githubUrl: 'https://github.com/ASHUTOSH2224'
+      githubUrl: 'https://github.com/ASHUTOSH2224',
+      category: 'ML/Backend'
     },
     {
       title: 'Nakshatra Gyan',
-      description: 'Secure astrology e-commerce platform with advanced authentication and payment processing.',
+      description: 'Secure astrology e-commerce platform with advanced authentication, payment processing, and real-time consultation features.',
+      longDescription: 'Full-stack e-commerce solution with secure payment integration, real-time chat system, and comprehensive admin dashboard for digital astrology services.',
       tech: ['Node.js', 'Express', 'MongoDB', 'Stripe', 'JWT', 'React Native'],
       icon: Shield,
       gradient: 'from-accent-tertiary to-accent-primary',
       bgGradient: 'from-accent-tertiary/10 to-accent-primary/5',
       borderColor: 'border-accent-tertiary/30',
+      codeSnippet: `const authenticateUser = (req, res, next) => {
+  const token = req.headers.authorization;
+  jwt.verify(token, process.env.JWT_SECRET, next);
+};`,
       liveUrl: '#',
-      githubUrl: 'https://github.com/ASHUTOSH2224'
+      githubUrl: 'https://github.com/ASHUTOSH2224',
+      category: 'Full Stack'
     }
   ];
 
+  const getTechBadgeClass = (tech: string) => {
+    const techMap: { [key: string]: string } = {
+      'React': 'tech-badge react',
+      'TypeScript': 'tech-badge typescript',
+      'JavaScript': 'tech-badge javascript',
+      'Node.js': 'tech-badge nodejs',
+      'Python': 'tech-badge python',
+      'FastAPI': 'tech-badge python',
+      'Express': 'tech-badge nodejs',
+      'MongoDB': 'tech-badge mongodb',
+      'PostgreSQL': 'tech-badge python',
+      'Redis': 'tech-badge python',
+      'Docker': 'tech-badge docker',
+      'AWS': 'tech-badge aws',
+      'TensorFlow': 'tech-badge python',
+      'scikit-learn': 'tech-badge python',
+      'OpenAI GPT': 'tech-badge python',
+      'Stripe': 'tech-badge javascript',
+      'JWT': 'tech-badge nodejs',
+      'React Native': 'tech-badge react',
+    };
+    return techMap[tech] || 'tech-badge';
+  };
+
   return (
-    <section id="projects" className="py-20 bg-matteBlack-800 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 matrix-bg opacity-15"></div>
-      <div className="absolute top-1/4 left-0 w-80 h-80 bg-accent-primary/3 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent-secondary/2 rounded-full blur-3xl animate-float delay-300"></div>
+    <section id="projects" className="py-20 bg-surface-primary relative overflow-hidden">
+      {/* Light Theme Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-surface-accent/30 via-surface-secondary/20 to-surface-accent/30"></div>
+      <div className="absolute top-1/4 left-0 w-80 h-80 bg-accent-primary/10 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent-secondary/8 rounded-full blur-3xl animate-float delay-300"></div>
       
-      <div className="container-max relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
-            Featured Projects
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="font-mono text-accent-primary">$ </span>
+            <span className="bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
+              cat projects.json
+            </span>
           </h2>
           <p className="text-xl text-text-muted max-w-3xl mx-auto">
-            Showcasing innovative solutions that blend cutting-edge technology with practical business applications
+            <span className="font-mono text-accent-primary">{'// '}</span>
+            Showcasing innovative solutions that blend cutting-edge technology
+            <br />
+            <span className="font-mono text-accent-primary">{'// '}</span>
+            with practical business applications
           </p>
         </div>
 
@@ -59,67 +107,151 @@ const Projects: React.FC = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`group glass-effect ${project.borderColor} rounded-2xl p-8 hover:scale-105 transition-all duration-300 hover:shadow-glow-lg border hover-glow animate-fade-in-up`}
+              className={`group code-editor hover:scale-105 transition-all duration-300 hover:shadow-glow-orange animate-fade-in-up`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              {/* Project Icon */}
-              <div className={`inline-flex p-3 bg-gradient-to-r ${project.gradient} rounded-lg mb-6 group-hover:scale-110 transition-transform duration-300 shadow-glow-sm`}>
-                <project.icon className="w-6 h-6 text-white" />
+              {/* Code Editor Header */}
+              <div className="code-header">
+                <div className="flex items-center gap-2">
+                  <div className="terminal-button red"></div>
+                  <div className="terminal-button yellow"></div>
+                  <div className="terminal-button green"></div>
+                </div>
+                <div className="code-tab active">
+                  <project.icon className="w-3 h-3" />
+                  <span>{project.title.replace(/\s+/g, '')}.tsx</span>
+                </div>
+                <div className="ml-auto">
+                  <span className="text-xs text-text-muted font-mono">{project.category}</span>
+                </div>
               </div>
 
-              {/* Project Info */}
-              <h3 className="text-2xl font-bold text-text-primary mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-accent-primary group-hover:to-accent-secondary group-hover:bg-clip-text transition-all duration-300">
-                {project.title}
-              </h3>
-              
-              <p className="text-text-secondary mb-6 leading-relaxed group-hover:text-text-primary transition-colors duration-300">
-                {project.description}
-              </p>
+              {/* Code Editor Content */}
+              <div className="code-content">
+                {/* Project Info */}
+                <div className="mb-6">
+                  <div className="code-line">
+                    <span className="line-number">1</span>
+                    <span className="line-content">
+                      <span className="syntax-comment">// {project.title}</span>
+                    </span>
+                  </div>
+                  <div className="code-line">
+                    <span className="line-number">2</span>
+                    <span className="line-content">
+                      <span className="syntax-keyword">const</span>
+                      <span className="text-text-primary"> project = {'{'}</span>
+                    </span>
+                  </div>
+                  <div className="code-line">
+                    <span className="line-number">3</span>
+                    <span className="line-content">
+                      <span className="ml-4 syntax-string">"description"</span>
+                      <span className="text-text-primary">: </span>
+                      <span className="syntax-string">"{project.description}"</span>
+                    </span>
+                  </div>
+                  <div className="code-line">
+                    <span className="line-number">4</span>
+                    <span className="line-content">
+                      <span className="text-text-primary">{'};'}</span>
+                    </span>
+                  </div>
+                </div>
 
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 glass-effect border border-surface-border text-text-muted text-sm rounded-full hover:border-accent-primary/50 hover:text-accent-primary transition-all duration-300 transform hover:scale-105"
+                {/* Code Snippet Preview */}
+                <div className="mb-6 bg-surface-accent rounded-lg p-4 border border-surface-border">
+                  <div className="code-line">
+                    <span className="line-number">1</span>
+                    <span className="line-content">
+                      <span className="syntax-comment">// Code Preview</span>
+                    </span>
+                  </div>
+                  <div className="text-xs font-mono text-text-secondary leading-relaxed">
+                    {project.codeSnippet.split('\n').map((line, i) => (
+                      <div key={i} className="code-line">
+                        <span className="line-number">{i + 2}</span>
+                        <span className="line-content text-text-secondary">{line}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="mb-6">
+                  <div className="code-line mb-2">
+                    <span className="line-number">8</span>
+                    <span className="line-content">
+                      <span className="syntax-comment">// Tech Stack</span>
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className={`${getTechBadgeClass(tech)} text-xs`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex space-x-3 mt-6">
+                  <a
+                    href={project.liveUrl}
+                    className="flex items-center space-x-2 px-4 py-2 bg-accent-primary/10 border border-accent-primary/30 text-accent-primary rounded-lg hover:bg-accent-primary/20 transition-all duration-300 transform hover:scale-105 group text-sm"
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex space-x-4">
-                <a
-                  href={project.liveUrl}
-                  className="flex items-center space-x-2 px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:border-accent-primary/50 hover:text-accent-primary transition-all duration-300 transform hover:scale-105 group"
-                >
-                  <ExternalLink size={16} className="group-hover:animate-bounce" />
-                  <span>Live Demo</span>
-                </a>
-                <a
-                  href={project.githubUrl}
-                  className="flex items-center space-x-2 px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:border-accent-secondary/50 hover:text-accent-secondary transition-all duration-300 transform hover:scale-105 group"
-                >
-                  <Github size={16} className="group-hover:animate-bounce" />
-                  <span>Code</span>
-                </a>
+                    <Play size={14} className="group-hover:animate-bounce" />
+                    <span className="font-mono">./run</span>
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    className="flex items-center space-x-2 px-4 py-2 bg-surface-elevated border border-surface-border text-text-muted rounded-lg hover:border-accent-secondary/50 hover:text-accent-secondary transition-all duration-300 transform hover:scale-105 group text-sm"
+                  >
+                    <Github size={14} className="group-hover:animate-bounce" />
+                    <span className="font-mono">git clone</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* View More Projects */}
-        <div className="text-center mt-12 animate-fade-in-up delay-600">
-          <a 
-            href="https://github.com/ASHUTOSH2224"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 group relative overflow-hidden"
-          >
-            <span className="relative z-10">View All Projects on GitHub</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          </a>
+        {/* Enhanced View More Projects */}
+        <div className="text-center mt-16 animate-fade-in-up delay-600">
+          <div className="terminal-window max-w-md mx-auto">
+            <div className="terminal-header">
+              <div className="terminal-button red"></div>
+              <div className="terminal-button yellow"></div>
+              <div className="terminal-button green"></div>
+              <span className="text-sm text-text-muted ml-4 font-mono">~/projects</span>
+            </div>
+            <div className="terminal-content">
+              <div className="mb-2">
+                <span className="terminal-prompt">alex@dev:~/projects$ </span>
+                <span className="text-text-primary">ls -la</span>
+              </div>
+              <div className="mb-2 text-text-secondary">
+                <span>total 47 repositories</span>
+              </div>
+              <div className="mb-4">
+                <span className="terminal-prompt">alex@dev:~/projects$ </span>
+                <span className="text-text-primary">git remote -v</span>
+              </div>
+              <a 
+                href="https://github.com/ASHUTOSH2224"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-semibold rounded-lg hover:shadow-glow-orange transition-all duration-300 transform hover:scale-105 group relative overflow-hidden"
+              >
+                <span className="relative z-10 font-mono">cd github.com/ASHUTOSH2224</span>
+                <ExternalLink size={16} className="relative z-10 group-hover:animate-bounce" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
