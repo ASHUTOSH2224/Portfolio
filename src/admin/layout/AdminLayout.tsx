@@ -11,6 +11,7 @@ import {
   Search,
   LogOut
 } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ interface AdminLayoutProps {
 const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const location = useLocation();
+  const { user, logout } = useAuth();
 
   const navigationItems = [
     { icon: Home, label: 'Dashboard', href: '/admin', active: location.pathname === '/admin' },
@@ -140,18 +142,19 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, currentPage }) => {
               {/* User Menu */}
               <div className="flex items-center space-x-3">
                 <div className="text-right">
-                  <div className="text-sm text-text-primary font-medium">Welcome, admin!</div>
+                  <div className="text-sm text-text-primary font-medium">Welcome, {user?.name || 'Admin'}!</div>
+                  <div className="text-xs text-text-muted">{user?.email}</div>
                 </div>
                 <div className="w-8 h-8 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center text-matteBlack-800 font-bold">
-                  A
+                  {user?.name?.charAt(0).toUpperCase() || 'A'}
                 </div>
-                <Link
-                  to="/"
+                <button
+                  onClick={logout}
                   className="p-2 text-text-muted hover:text-red-400 transition-colors duration-200 glass-effect rounded-lg hover-glow"
-                  title="Logout to Portfolio"
+                  title="Logout"
                 >
                   <LogOut className="w-4 h-4" />
-                </Link>
+                </button>
               </div>
             </div>
           </div>
