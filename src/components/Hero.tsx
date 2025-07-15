@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Play, Terminal, Code, Cpu, Star, Zap, Heart } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -66,7 +67,7 @@ const Hero: React.FC = () => {
           {/* Right Content - Simplified */}
           <div className={`relative ${isLoaded ? 'animate-fade-in-right' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
             <div className="relative">
-              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" alt="Placeholder" className="rounded-2xl shadow-2xl" />
+              <Spline scene="https://my.spline.design/genkubgreetingrobot-zefEh93kOLx7C4G2ierAQHpP/scene.splinecode" />
             </div>
           </div>
         </div>
