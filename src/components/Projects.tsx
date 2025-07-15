@@ -1,7 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ExternalLink, Github, Zap, Shield, Mail, FileText, Play } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const Projects: React.FC = () => {
+  const { trackEvent, trackConversion } = useAnalytics();
+
+  useEffect(() => {
+    // Track project section view
+    const trackProjectView = async () => {
+      try {
+        await trackEvent('project_view', 'projects_section', 'view', {
+          section: 'projects',
+          viewType: 'section_load',
+          action: 'view'
+        });
+      } catch (error) {
+        console.error('Failed to track project section view:', error);
+      }
+    };
+    trackProjectView();
+  }, [trackEvent]);
+
+  const handleProjectClick = async (project: any, type: 'live' | 'github') => {
+    try {
+      // Track project click event
+      await trackEvent('click', `project_${type}_link`, type, {
+        projectId: project.id,
+        projectTitle: project.title,
+        projectCategory: project.category,
+        linkType: type,
+        action: 'click'
+      });
+
+      // Track project view conversion
+      await trackConversion('project_inquiry', type, {
+        projectId: project.id,
+        projectTitle: project.title,
+        projectCategory: project.category,
+        linkType: type,
+        conversionType: 'project_click'
+      });
+
+      // Open the URL in a new tab
+      window.open(type === 'live' ? project.liveUrl : project.githubUrl, '_blank');
+    } catch (error) {
+      console.error('Failed to track project click:', error);
+    }
+  };
+
   const projects = [
     {
       title: 'Scalixity Website',
@@ -198,21 +244,21 @@ const Projects: React.FC = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex space-x-3 mt-6">
-                  <a
-                    href={project.liveUrl}
-                    className="flex items-center space-x-2 px-4 py-2 bg-accent-primary/10 border border-accent-primary/30 text-accent-primary rounded-lg hover:bg-accent-primary/20 transition-all duration-300 transform hover:scale-105 group text-sm"
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => handleProjectClick(project, 'live')}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-medium hover:shadow-glow-lg transition-all duration-300"
                   >
-                    <Play size={14} className="group-hover:animate-bounce" />
-                    <span className="font-mono">./run</span>
-                  </a>
-                  <a
-                    href={project.githubUrl}
-                    className="flex items-center space-x-2 px-4 py-2 bg-surface-elevated border border-surface-border text-text-muted rounded-lg hover:border-accent-secondary/50 hover:text-accent-secondary transition-all duration-300 transform hover:scale-105 group text-sm"
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Live Demo</span>
+                  </button>
+                  <button
+                    onClick={() => handleProjectClick(project, 'github')}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg glass-effect border border-surface-border text-text-primary hover:border-accent-primary/50 hover:text-accent-primary transition-all duration-300"
                   >
-                    <Github size={14} className="group-hover:animate-bounce" />
-                    <span className="font-mono">git clone</span>
-                  </a>
+                    <Github className="w-4 h-4" />
+                    <span>View Code</span>
+                  </button>
                 </div>
               </div>
             </div>

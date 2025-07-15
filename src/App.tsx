@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,6 +12,7 @@ import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import analyticsService from './services/analyticsService';
 
 // Admin imports
 import AdminLayout from './admin/layout/AdminLayout';
@@ -15,6 +20,7 @@ import Dashboard from './admin/pages/Dashboard';
 import UserAnalytics from './admin/pages/UserAnalytics';
 import PortfolioManagement from './admin/pages/PortfolioManagement';
 import ContactManagement from './admin/pages/ContactManagement';
+import Login from './admin/pages/Login';
 
 // Portfolio component
 const Portfolio: React.FC = () => {
@@ -46,29 +52,134 @@ const Portfolio: React.FC = () => {
 const AdminRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/analytics" element={<UserAnalytics />} />
-      <Route path="/portfolio" element={<PortfolioManagement />} />
-      <Route path="/contact" element={<ContactManagement />} />
+      {/* Public admin routes */}
+      <Route path="/login" element={<Login />} />
+      
+      {/* Protected admin routes */}
+      <Route 
+        path="/" 
+        element={
+          <ProtectedRoute requireAdmin={true}>
+            <AdminLayout>
+              <Dashboard />
+            </AdminLayout>
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/analytics" 
+        element={
+          <ProtectedRoute requireAdmin={true}>
+            <AdminLayout>
+              <UserAnalytics />
+            </AdminLayout>
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/portfolio" 
+        element={
+          <ProtectedRoute requireAdmin={true}>
+            <AdminLayout>
+              <PortfolioManagement />
+            </AdminLayout>
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/contact" 
+        element={
+          <ProtectedRoute requireAdmin={true}>
+            <AdminLayout>
+              <ContactManagement />
+            </AdminLayout>
+          </ProtectedRoute>
+        } 
+      />
       <Route path="*" element={<Navigate to="/admin" replace />} />
     </Routes>
   );
 };
 
+// Create a query client
+const queryClient = new QueryClient();
+
 function App() {
+  const getUserAgent = () => navigator.userAgent || 'Unknown';
+  const getIpAddress = () => '127.0.0.1'; // For development, in production this should be handled by the server
+
+  // Initialize analytics session
+  const initSession = async () => {
+    try {
+      const sessionId = analyticsService.getSessionId();
+      await analyticsService.trackPageView({
+        sessionId,
+        path: window.location.pathname,
+        title: document.title || window.location.pathname,
+        referrer: document.referrer || '',
+        userAgent: getUserAgent(),
+        ipAddress: getIpAddress()
+      });
+    } catch (error) {
+      console.error('Failed to initialize analytics session:', error);
+    }
+  };
+
+  // End analytics session
+  const endSession = async () => {
+    try {
+      const sessionId = analyticsService.getSessionId();
+      await analyticsService.trackEvent({
+        sessionId,
+        type: 'other',
+        element: 'session_end',
+        userAgent: getUserAgent(),
+        ipAddress: getIpAddress()
+      });
+    } catch (error) {
+      console.error('Failed to end analytics session:', error);
+    }
+  };
+
+  useEffect(() => {
+    initSession();
+    return () => {
+      endSession();
+    };
+  }, []);
+
   return (
-    <Router>
-      <Routes>
-        {/* Portfolio Route */}
-        <Route path="/" element={<Portfolio />} />
-        
-        {/* Admin Routes */}
-        <Route path="/admin/*" element={<AdminRoutes />} />
-        
-        {/* Catch all route */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Router>
+          <div className="min-h-screen bg-gray-50">
+            <Toaster position="top-right" />
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={
+                  <>
+                    <Hero />
+                    <About />
+                    <Projects />
+                    <Skills />
+                    <Certifications />
+                    <Contact />
+                  </>
+                } />
+                <Route path="/admin/*" element={
+                  <ProtectedRoute>
+                    <AdminRoutes />
+                  </ProtectedRoute>
+                } />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

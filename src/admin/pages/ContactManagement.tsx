@@ -11,72 +11,142 @@ import {
   Clock,
   CheckCircle,
   AlertCircle,
-  Calendar
+  Calendar,
+  Eye,
+  Edit,
+  MessageSquare,
+  StickyNote,
+  RefreshCw
 } from 'lucide-react';
-import AdminLayout from '../layout/AdminLayout';
-
-interface ContactSubmission {
-  id: string;
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  submittedAt: string;
-  status: 'new' | 'read' | 'replied' | 'archived';
-  priority: 'low' | 'medium' | 'high';
-  starred: boolean;
-}
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import contactService, { ContactSubmission } from '../../services/contactService';
+import toast from 'react-hot-toast';
 
 const ContactManagement: React.FC = () => {
-  const [submissions, setSubmissions] = useState<ContactSubmission[]>([
-    {
-      id: '1',
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      subject: 'Web Development Project Inquiry',
-      message: 'Hi Ashutosh, I am interested in hiring you for a full-stack web development project. The project involves building an e-commerce platform with React and Node.js. Could we schedule a call to discuss the requirements and timeline?',
-      submittedAt: '2024-01-15 14:30',
-      status: 'new',
-      priority: 'high',
-      starred: true
-    },
-    {
-      id: '2',
-      name: 'Sarah Johnson',
-      email: 'sarah.j@techcorp.com',
-      subject: 'Collaboration Opportunity',
-      message: 'Hello, I work at TechCorp and we are looking for a skilled developer to join our team for a machine learning project. Your background in AI and full-stack development looks perfect for our needs.',
-      submittedAt: '2024-01-14 09:15',
-      status: 'read',
-      priority: 'medium',
-      starred: false
-    },
-    {
-      id: '3',
-      name: 'Mike Chen',
-      email: 'mike.chen@startup.io',
-      subject: 'Mobile App Development',
-      message: 'Hi, I am the founder of a startup and we need help building a React Native mobile app. Would you be available for a consultation?',
-      submittedAt: '2024-01-13 16:45',
-      status: 'replied',
-      priority: 'medium',
-      starred: false
-    }
-  ]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [filterPriority, setFilterPriority] = useState<string>('all');
+  const [selectedContact, setSelectedContact] = useState<ContactSubmission | null>(null);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [noteContent, setNoteContent] = useState('');
+  const [showResponseModal, setShowResponseModal] = useState(false);
+  const [showNoteModal, setShowNoteModal] = useState(false);
 
-  const [selectedSubmission, setSelectedSubmission] = useState<ContactSubmission | null>(null);
-  const [filterStatus, setFilterStatus] = useState<'all' | 'new' | 'read' | 'replied' | 'archived'>('all');
+  const queryClient = useQueryClient();
+
+  // Fetch contacts with filters
+  const { data: contactData, isLoading: contactsLoading, refetch } = useQuery({
+    queryKey: ['contacts', filterStatus, filterPriority, searchTerm],
+    queryFn: () => contactService.getContacts({
+      status: filterStatus === 'all' ? undefined : filterStatus,
+      priority: filterPriority === 'all' ? undefined : filterPriority,
+      search: searchTerm || undefined,
+      limit: 50,
+    }),
+    refetchInterval: 60000,
+  });
+
+  // Update contact status mutation
+  const updateStatusMutation = useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) => 
+      contactService.updateContactStatus(id, status),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      toast.success('Contact status updated');
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.error || 'Failed to update status');
+    },
+  });
+
+  // Update contact priority mutation
+  const updatePriorityMutation = useMutation({
+    mutationFn: ({ id, priority }: { id: string; priority: string }) => 
+      contactService.updateContactPriority(id, priority),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      toast.success('Contact priority updated');
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.error || 'Failed to update priority');
+    },
+  });
+
+  // Add response mutation
+  const addResponseMutation = useMutation({
+    mutationFn: ({ id, message }: { id: string; message: string }) => 
+      contactService.addResponse(id, message),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      toast.success('Response sent successfully');
+      setShowResponseModal(false);
+      setResponseMessage('');
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.error || 'Failed to send response');
+    },
+  });
+
+  // Add note mutation
+  const addNoteMutation = useMutation({
+    mutationFn: ({ id, content }: { id: string; content: string }) => 
+      contactService.addNote(id, content),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      toast.success('Note added successfully');
+      setShowNoteModal(false);
+      setNoteContent('');
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.error || 'Failed to add note');
+    },
+  });
+
+  // Mark as spam mutation
+  const markSpamMutation = useMutation({
+    mutationFn: contactService.markAsSpam,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      toast.success('Contact marked as spam');
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.error || 'Failed to mark as spam');
+    },
+  });
+
+  // Delete contact mutation
+  const deleteContactMutation = useMutation({
+    mutationFn: contactService.deleteContact,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['contacts'] });
+      toast.success('Contact deleted successfully');
+      setSelectedContact(null);
+    },
+    onError: (error: any) => {
+      toast.error(error.response?.data?.error || 'Failed to delete contact');
+    },
+  });
+
+  // Initialize contact stats with default values
+  const contactStats = contactData?.stats || {
+    new: 0,
+    inProgress: 0,
+    responded: 0,
+    highPriority: 0
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'new':
+      case 'New':
         return 'text-accent-primary bg-accent-primary/10 border-accent-primary/30';
-      case 'read':
+      case 'Read':
         return 'text-yellow-400 bg-yellow-400/10 border-yellow-400/30';
-      case 'replied':
+      case 'In Progress':
+        return 'text-blue-400 bg-blue-400/10 border-blue-400/30';
+      case 'Responded':
         return 'text-green-400 bg-green-400/10 border-green-400/30';
-      case 'archived':
-        return 'text-text-muted bg-surface-tertiary border-surface-border';
+      case 'Closed':
+        return 'text-gray-400 bg-gray-400/10 border-gray-400/30';
       default:
         return 'text-text-muted bg-surface-tertiary border-surface-border';
     }
@@ -84,247 +154,447 @@ const ContactManagement: React.FC = () => {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high':
+      case 'Urgent':
+        return 'text-red-500';
+      case 'High':
         return 'text-red-400';
-      case 'medium':
+      case 'Medium':
         return 'text-yellow-400';
-      case 'low':
+      case 'Low':
         return 'text-green-400';
       default:
         return 'text-text-muted';
     }
   };
 
-  const filteredSubmissions = filterStatus === 'all' 
-    ? submissions 
-    : submissions.filter(sub => sub.status === filterStatus);
-
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'new':
+      case 'New':
         return <AlertCircle className="w-4 h-4" />;
-      case 'read':
+      case 'Read':
+        return <Eye className="w-4 h-4" />;
+      case 'In Progress':
         return <Clock className="w-4 h-4" />;
-      case 'replied':
+      case 'Responded':
         return <CheckCircle className="w-4 h-4" />;
-      case 'archived':
+      case 'Closed':
         return <Archive className="w-4 h-4" />;
       default:
         return <Mail className="w-4 h-4" />;
     }
   };
 
+  const handleStatusChange = (contactId: string, newStatus: string) => {
+    updateStatusMutation.mutate({ id: contactId, status: newStatus });
+  };
+
+  const handlePriorityChange = (contactId: string, newPriority: string) => {
+    updatePriorityMutation.mutate({ id: contactId, priority: newPriority });
+  };
+
+  const handleSendResponse = () => {
+    if (!selectedContact || !responseMessage.trim()) {
+      toast.error('Please enter a response message');
+      return;
+    }
+    addResponseMutation.mutate({ 
+      id: selectedContact.id, 
+      message: responseMessage 
+    });
+  };
+
+  const handleAddNote = () => {
+    if (!selectedContact || !noteContent.trim()) {
+      toast.error('Please enter note content');
+      return;
+    }
+    addNoteMutation.mutate({ 
+      id: selectedContact.id, 
+      content: noteContent 
+    });
+  };
+
   return (
-    <AdminLayout>
-      <div className="space-y-6">
-        {/* Header */}
-        <div>
-          <h2 className="text-3xl font-bold text-text-primary mb-2">Contact Management</h2>
-          <p className="text-text-muted">Manage and respond to contact form submissions</p>
-        </div>
+    <div className="space-y-6">
+      {/* Header */}
+      <div>
+        <h2 className="text-3xl font-bold text-text-primary mb-2">Contact Management</h2>
+        <p className="text-text-muted">Manage and respond to contact form submissions</p>
+      </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="glass-effect rounded-xl p-6 border border-accent-primary/30 bg-gradient-to-br from-accent-primary/10 to-accent-primary/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-text-muted">Total Inquiries</p>
-                <p className="text-2xl font-bold text-accent-primary">{submissions.length}</p>
-              </div>
-              <Mail className="w-8 h-8 text-accent-primary" />
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="glass-effect rounded-xl p-6 border border-accent-primary/30 bg-gradient-to-br from-accent-primary/10 to-accent-primary/5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-text-muted">Total Inquiries</p>
+              <p className="text-2xl font-bold text-accent-primary">{contactData?.totalCount || 0}</p>
             </div>
-          </div>
-
-          <div className="glass-effect rounded-xl p-6 border border-yellow-400/30 bg-gradient-to-br from-yellow-400/10 to-yellow-400/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-text-muted">New</p>
-                <p className="text-2xl font-bold text-yellow-400">
-                  {submissions.filter(s => s.status === 'new').length}
-                </p>
-              </div>
-              <AlertCircle className="w-8 h-8 text-yellow-400" />
-            </div>
-          </div>
-
-          <div className="glass-effect rounded-xl p-6 border border-green-400/30 bg-gradient-to-br from-green-400/10 to-green-400/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-text-muted">Replied</p>
-                <p className="text-2xl font-bold text-green-400">
-                  {submissions.filter(s => s.status === 'replied').length}
-                </p>
-              </div>
-              <CheckCircle className="w-8 h-8 text-green-400" />
-            </div>
-          </div>
-
-          <div className="glass-effect rounded-xl p-6 border border-red-400/30 bg-gradient-to-br from-red-400/10 to-red-400/5">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-text-muted">High Priority</p>
-                <p className="text-2xl font-bold text-red-400">
-                  {submissions.filter(s => s.priority === 'high').length}
-                </p>
-              </div>
-              <Star className="w-8 h-8 text-red-400" />
-            </div>
+            <Mail className="w-8 h-8 text-accent-primary" />
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* Submissions List */}
-          <div className="lg:col-span-2 space-y-4">
-            {/* Filters */}
-            <div className="flex items-center justify-between glass-effect rounded-lg border border-surface-border p-4">
-              <div className="flex items-center space-x-4">
-                <select 
-                  value={filterStatus}
-                  onChange={(e) => setFilterStatus(e.target.value as any)}
-                  className="px-3 py-2 glass-effect border border-surface-border rounded-lg text-text-primary bg-matteBlack-800 focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
-                >
-                  <option value="all">All Status</option>
-                  <option value="new">New</option>
-                  <option value="read">Read</option>
-                  <option value="replied">Replied</option>
-                  <option value="archived">Archived</option>
-                </select>
-              </div>
-              
-              <div className="relative">
+        <div className="glass-effect rounded-xl p-6 border border-yellow-400/30 bg-gradient-to-br from-yellow-400/10 to-yellow-400/5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-text-muted">New</p>
+              <p className="text-2xl font-bold text-yellow-400">{contactStats.new}</p>
+            </div>
+            <AlertCircle className="w-8 h-8 text-yellow-400" />
+          </div>
+        </div>
+
+        <div className="glass-effect rounded-xl p-6 border border-blue-400/30 bg-gradient-to-br from-blue-400/10 to-blue-400/5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-text-muted">In Progress</p>
+              <p className="text-2xl font-bold text-blue-400">{contactStats.inProgress}</p>
+            </div>
+            <Clock className="w-8 h-8 text-blue-400" />
+          </div>
+        </div>
+
+        <div className="glass-effect rounded-xl p-6 border border-green-400/30 bg-gradient-to-br from-green-400/10 to-green-400/5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-text-muted">Responded</p>
+              <p className="text-2xl font-bold text-green-400">{contactStats.responded}</p>
+            </div>
+            <CheckCircle className="w-8 h-8 text-green-400" />
+          </div>
+        </div>
+
+        <div className="glass-effect rounded-xl p-6 border border-red-400/30 bg-gradient-to-br from-red-400/10 to-red-400/5">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-text-muted">High Priority</p>
+              <p className="text-2xl font-bold text-red-400">{contactStats.highPriority}</p>
+            </div>
+            <Star className="w-8 h-8 text-red-400" />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        {/* Contacts List */}
+        <div className="lg:col-span-2 space-y-4">
+          {/* Filters */}
+          <div className="glass-effect rounded-lg border border-surface-border p-4">
+            <div className="flex flex-wrap items-center gap-4">
+              {/* Search */}
+              <div className="relative flex-1 min-w-64">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-text-muted" />
                 <input
                   type="text"
-                  placeholder="Search submissions..."
-                  className="pl-10 pr-4 py-2 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300 w-64"
+                  placeholder="Search contacts..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
                 />
               </div>
-            </div>
 
-            {/* Submissions */}
-            <div className="space-y-3">
-              {filteredSubmissions.map((submission) => (
+              {/* Status Filter */}
+              <select 
+                value={filterStatus}
+                onChange={(e) => setFilterStatus(e.target.value)}
+                className="px-3 py-2 glass-effect border border-surface-border rounded-lg text-text-primary bg-matteBlack-800 focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
+              >
+                <option value="all">All Status</option>
+                <option value="New">New</option>
+                <option value="Read">Read</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Responded">Responded</option>
+                <option value="Closed">Closed</option>
+              </select>
+
+              {/* Priority Filter */}
+              <select 
+                value={filterPriority}
+                onChange={(e) => setFilterPriority(e.target.value)}
+                className="px-3 py-2 glass-effect border border-surface-border rounded-lg text-text-primary bg-matteBlack-800 focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300"
+              >
+                <option value="all">All Priority</option>
+                <option value="Urgent">Urgent</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+
+              {/* Refresh */}
+              <button 
+                onClick={() => refetch()}
+                className="p-2 glass-effect border border-surface-border rounded-lg text-text-muted hover:text-accent-primary hover:border-accent-primary/50 transition-all duration-300 group"
+              >
+                <RefreshCw className="w-4 h-4 group-hover:animate-spin" />
+              </button>
+            </div>
+          </div>
+
+          {/* Contacts List */}
+          <div className="space-y-3">
+            {contactsLoading ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-primary mx-auto mb-4"></div>
+                <p className="text-text-muted">Loading contacts...</p>
+              </div>
+            ) : contactData?.contacts?.length === 0 ? (
+              <div className="text-center py-16 glass-effect rounded-lg border border-surface-border">
+                <Mail className="w-16 h-16 text-accent-primary mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-text-primary mb-2">No contacts found</h3>
+                <p className="text-text-muted">No contacts match your current filters.</p>
+              </div>
+            ) : (
+              contactData?.contacts?.map((contact) => (
                 <div
-                  key={submission.id}
-                  onClick={() => setSelectedSubmission(submission)}
-                  className={`glass-effect rounded-lg border p-4 cursor-pointer hover-glow transition-all duration-300 ${
-                    selectedSubmission?.id === submission.id 
-                      ? 'border-accent-primary/50 bg-accent-primary/5' 
-                      : 'border-surface-border hover:border-accent-primary/30'
+                  key={contact.id}
+                  onClick={() => setSelectedContact(contact)}
+                  className={`glass-effect rounded-lg border p-4 cursor-pointer transition-all duration-300 ${
+                    selectedContact?.id === contact.id 
+                      ? 'border-accent-primary bg-accent-primary/5' 
+                      : 'border-surface-border hover:border-accent-primary/50'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full flex items-center justify-center text-matteBlack-800 font-bold">
-                        {submission.name.charAt(0)}
-                      </div>
-                      <div>
-                        <h4 className="text-text-primary font-semibold">{submission.name}</h4>
-                        <p className="text-text-muted text-sm">{submission.email}</p>
-                      </div>
+                      <h4 className="font-medium text-text-primary">{contact.name}</h4>
+                      <span className="text-sm text-text-muted">{contact.email}</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      {submission.starred && (
-                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                      )}
-                      <div className={`w-2 h-2 rounded-full ${getPriorityColor(submission.priority)}`}></div>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(submission.status)}`}>
-                        {submission.status}
+                      <span className={`px-2 py-1 rounded-full text-xs border ${getStatusColor(contact.status)}`}>
+                        {contact.status}
+                      </span>
+                      <span className={`text-xs font-medium ${getPriorityColor(contact.priority)}`}>
+                        {contact.priority}
                       </span>
                     </div>
                   </div>
                   
-                  <h5 className="text-text-primary font-medium mb-2">{submission.subject}</h5>
-                  <p className="text-text-secondary text-sm line-clamp-2 mb-3">{submission.message}</p>
+                  <h5 className="text-sm font-medium text-text-secondary mb-2">{contact.subject}</h5>
+                  <p className="text-sm text-text-muted line-clamp-2 mb-3">{contact.message}</p>
                   
                   <div className="flex items-center justify-between text-xs text-text-muted">
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="w-3 h-3" />
-                      <span>{submission.submittedAt}</span>
+                    <span>{new Date(contact.createdAt).toLocaleDateString()} at {new Date(contact.createdAt).toLocaleTimeString()}</span>
+                    <div className="flex items-center space-x-2">
+                      {contact.responses?.length > 0 && (
+                        <span className="flex items-center space-x-1">
+                          <MessageSquare className="w-3 h-3" />
+                          <span>{contact.responses.length}</span>
+                        </span>
+                      )}
+                      {contact.notes?.length > 0 && (
+                        <span className="flex items-center space-x-1">
+                          <StickyNote className="w-3 h-3" />
+                          <span>{contact.notes.length}</span>
+                        </span>
+                      )}
                     </div>
-                    <div className="flex items-center space-x-1">
-                      {getStatusIcon(submission.status)}
-                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Detail Panel */}
-          <div className="glass-effect rounded-xl border border-surface-border">
-            {selectedSubmission ? (
-              <div className="p-6 space-y-6">
-                {/* Header */}
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-xl font-semibold text-text-primary mb-1">
-                      {selectedSubmission.subject}
-                    </h3>
-                    <p className="text-text-muted text-sm">
-                      From: {selectedSubmission.name} &lt;{selectedSubmission.email}&gt;
-                    </p>
-                    <p className="text-text-muted text-sm">
-                      {selectedSubmission.submittedAt}
-                    </p>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <button className="p-2 text-yellow-400 hover:text-yellow-300 transition-colors duration-200 glass-effect rounded-lg hover-glow">
-                      <Star className={selectedSubmission.starred ? 'fill-yellow-400' : ''} size={16} />
-                    </button>
-                    <button className="p-2 text-text-muted hover:text-accent-primary transition-colors duration-200 glass-effect rounded-lg hover-glow">
-                      <MoreHorizontal size={16} />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Priority & Status */}
-                <div className="flex items-center space-x-4">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(selectedSubmission.status)}`}>
-                    {selectedSubmission.status}
-                  </span>
-                  <span className={`text-sm font-medium ${getPriorityColor(selectedSubmission.priority)}`}>
-                    {selectedSubmission.priority} priority
-                  </span>
-                </div>
-
-                {/* Message */}
-                <div className="bg-surface-tertiary/30 rounded-lg p-4 border border-surface-border">
-                  <p className="text-text-primary leading-relaxed whitespace-pre-wrap">
-                    {selectedSubmission.message}
-                  </p>
-                </div>
-
-                {/* Actions */}
-                <div className="space-y-3">
-                  <button className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105">
-                    <Reply className="w-4 h-4" />
-                    <span>Reply</span>
-                  </button>
-                  
-                  <div className="grid grid-cols-2 gap-3">
-                    <button className="flex items-center justify-center space-x-2 px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:text-accent-primary hover:border-accent-primary/50 transition-all duration-300">
-                      <Archive className="w-4 h-4" />
-                      <span>Archive</span>
-                    </button>
-                    <button className="flex items-center justify-center space-x-2 px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:text-red-400 hover:border-red-400/50 transition-all duration-300">
-                      <Trash2 className="w-4 h-4" />
-                      <span>Delete</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="p-12 text-center">
-                <Mail className="w-12 h-12 text-accent-primary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-text-primary mb-2">No submission selected</h3>
-                <p className="text-text-muted">Select a submission from the list to view details</p>
-              </div>
+              ))
             )}
           </div>
         </div>
+
+        {/* Contact Details Panel */}
+        <div className="space-y-4">
+          {selectedContact ? (
+            <>
+              {/* Contact Info */}
+              <div className="glass-effect rounded-lg border border-surface-border p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-text-primary">{selectedContact.name}</h3>
+                    <p className="text-text-muted">{selectedContact.email}</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    {/* Status Dropdown */}
+                    <select
+                      value={selectedContact.status}
+                      onChange={(e) => handleStatusChange(selectedContact.id, e.target.value)}
+                      className="px-2 py-1 text-xs glass-effect border border-surface-border rounded text-text-primary bg-matteBlack-800"
+                    >
+                      <option value="New">New</option>
+                      <option value="Read">Read</option>
+                      <option value="In Progress">In Progress</option>
+                      <option value="Responded">Responded</option>
+                      <option value="Closed">Closed</option>
+                    </select>
+                    
+                    {/* Priority Dropdown */}
+                    <select
+                      value={selectedContact.priority}
+                      onChange={(e) => handlePriorityChange(selectedContact.id, e.target.value)}
+                      className="px-2 py-1 text-xs glass-effect border border-surface-border rounded text-text-primary bg-matteBlack-800"
+                    >
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                      <option value="Urgent">Urgent</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <div>
+                    <label className="text-sm font-medium text-text-secondary">Subject</label>
+                    <p className="text-text-primary">{selectedContact.subject}</p>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-text-secondary">Message</label>
+                    <p className="text-text-primary">{selectedContact.message}</p>
+                  </div>
+                  <div className="text-xs text-text-muted">
+                    Submitted on {new Date(selectedContact.createdAt).toLocaleDateString()} at {new Date(selectedContact.createdAt).toLocaleTimeString()}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => setShowResponseModal(true)}
+                  className="flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300"
+                >
+                  <Reply className="w-4 h-4" />
+                  <span>Reply</span>
+                </button>
+                <button
+                  onClick={() => setShowNoteModal(true)}
+                  className="flex items-center justify-center space-x-2 px-4 py-2 glass-effect border border-surface-border text-text-primary rounded-lg hover:border-accent-primary/50 transition-all duration-300"
+                >
+                  <StickyNote className="w-4 h-4" />
+                  <span>Add Note</span>
+                </button>
+                <button
+                  onClick={() => markSpamMutation.mutate(selectedContact.id)}
+                  className="flex items-center justify-center space-x-2 px-4 py-2 glass-effect border border-yellow-400/50 text-yellow-400 rounded-lg hover:bg-yellow-400/10 transition-all duration-300"
+                >
+                  <AlertCircle className="w-4 h-4" />
+                  <span>Mark Spam</span>
+                </button>
+                <button
+                  onClick={() => {
+                    if (window.confirm('Are you sure you want to delete this contact?')) {
+                      deleteContactMutation.mutate(selectedContact.id);
+                    }
+                  }}
+                  className="flex items-center justify-center space-x-2 px-4 py-2 glass-effect border border-red-400/50 text-red-400 rounded-lg hover:bg-red-400/10 transition-all duration-300"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  <span>Delete</span>
+                </button>
+              </div>
+
+              {/* Responses */}
+              {selectedContact.responses && selectedContact.responses.length > 0 && (
+                <div className="glass-effect rounded-lg border border-surface-border p-4">
+                  <h4 className="font-medium text-text-primary mb-3">Responses ({selectedContact.responses.length})</h4>
+                  <div className="space-y-3">
+                    {selectedContact.responses.map((response, index) => (
+                      <div key={index} className="p-3 glass-effect rounded border border-surface-border">
+                        <p className="text-sm text-text-primary mb-2">{response.message}</p>
+                        <div className="text-xs text-text-muted">
+                          Sent by {response.sentBy} on {new Date(response.sentAt).toLocaleDateString()}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Notes */}
+              {selectedContact.notes && selectedContact.notes.length > 0 && (
+                <div className="glass-effect rounded-lg border border-surface-border p-4">
+                  <h4 className="font-medium text-text-primary mb-3">Notes ({selectedContact.notes.length})</h4>
+                  <div className="space-y-3">
+                    {selectedContact.notes.map((note, index) => (
+                      <div key={index} className="p-3 glass-effect rounded border border-surface-border">
+                        <p className="text-sm text-text-primary mb-2">{note.content}</p>
+                        <div className="text-xs text-text-muted">
+                          Added by {note.createdBy} on {new Date(note.createdAt).toLocaleDateString()}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="glass-effect rounded-lg border border-surface-border p-8 text-center">
+              <Mail className="w-12 h-12 text-text-muted mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-text-primary mb-2">Select a Contact</h3>
+              <p className="text-text-muted">Choose a contact from the list to view details and manage responses.</p>
+            </div>
+          )}
+        </div>
       </div>
-    </AdminLayout>
+
+      {/* Response Modal */}
+      {showResponseModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="glass-effect rounded-xl border border-surface-border p-6 w-full max-w-lg">
+            <h3 className="text-lg font-semibold text-text-primary mb-4">Send Response</h3>
+            <textarea
+              value={responseMessage}
+              onChange={(e) => setResponseMessage(e.target.value)}
+              placeholder="Enter your response..."
+              className="w-full h-32 px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300 resize-none"
+            />
+            <div className="flex space-x-3 mt-4">
+              <button
+                onClick={handleSendResponse}
+                disabled={addResponseMutation.isPending}
+                className="flex-1 px-4 py-2 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 disabled:opacity-50"
+              >
+                {addResponseMutation.isPending ? 'Sending...' : 'Send Response'}
+              </button>
+              <button
+                onClick={() => {
+                  setShowResponseModal(false);
+                  setResponseMessage('');
+                }}
+                className="px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:text-text-primary transition-all duration-300"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Note Modal */}
+      {showNoteModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="glass-effect rounded-xl border border-surface-border p-6 w-full max-w-lg">
+            <h3 className="text-lg font-semibold text-text-primary mb-4">Add Note</h3>
+            <textarea
+              value={noteContent}
+              onChange={(e) => setNoteContent(e.target.value)}
+              placeholder="Enter your note..."
+              className="w-full h-32 px-4 py-3 glass-effect border border-surface-border rounded-lg text-text-primary placeholder-text-muted focus:border-accent-primary focus:ring-1 focus:ring-accent-primary/50 transition-all duration-300 resize-none"
+            />
+            <div className="flex space-x-3 mt-4">
+              <button
+                onClick={handleAddNote}
+                disabled={addNoteMutation.isPending}
+                className="flex-1 px-4 py-2 bg-gradient-to-r from-accent-primary to-accent-secondary text-matteBlack-800 font-semibold rounded-lg hover:shadow-glow-lg transition-all duration-300 disabled:opacity-50"
+              >
+                {addNoteMutation.isPending ? 'Adding...' : 'Add Note'}
+              </button>
+              <button
+                onClick={() => {
+                  setShowNoteModal(false);
+                  setNoteContent('');
+                }}
+                className="px-4 py-2 glass-effect border border-surface-border text-text-muted rounded-lg hover:text-text-primary transition-all duration-300"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
