@@ -34,25 +34,19 @@ const Services: React.FC = () => {
     <section id="services" className="py-20 bg-surface-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent">
-              Services
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary">
+            Services
           </h2>
-          <p className="text-xl text-text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
             I offer a range of services to help you build and grow your business.
           </p>
         </div>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card"
-            >
+            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card">
               <div className="flex items-center gap-4 mb-4">
-                <div className="bg-gradient-to-r from-accent-primary to-accent-secondary p-3 rounded-full">
-                  <service.icon className="w-6 h-6 text-white" />
+                <div className="bg-surface-accent p-3 rounded-full">
+                  <service.icon className="w-6 h-6 text-accent-primary" />
                 </div>
                 <h3 className="text-2xl font-semibold text-text-primary">{service.title}</h3>
               </div>
