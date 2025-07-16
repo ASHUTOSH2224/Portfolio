@@ -1,56 +1,100 @@
-import React from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Code2, Sparkles } from 'lucide-react';
 
 const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const navLinks = ['About', 'Projects', 'Skills', 'Certifications', 'Contact'];
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  const navLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Work', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Contact', href: '#contact' }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-surface-primary/80 backdrop-blur-lg shadow-md animate-fade-in">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-bold text-text-primary">
-              Ashutosh
-            </a>
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      scrolled ? 'glass backdrop-blur py-4' : 'bg-transparent py-6'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center space-x-2 group">
+            <div className="relative">
+              <Code2 className="w-8 h-8 text-gradient animate-pulse-slow" />
+              <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-yellow-400 animate-pulse" />
+            </div>
+            <span className="text-xl font-bold text-gradient">Ashutosh</span>
           </div>
+
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="text-text-secondary hover:text-accent-primary font-medium transition-colors duration-300"
+                key={link.name}
+                href={link.href}
+                className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 group animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {link}
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-text-secondary hover:text-accent-primary hover:bg-surface-secondary"
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <a
+              href="#contact"
+              className="btn-primary animate-fade-in-up delay-500"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              Let's Talk
+            </a>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-gray-300 hover:text-white transition-colors duration-300"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-      </div>
-      {isOpen && (
-        <div className="md:hidden bg-surface-primary/95 backdrop-blur-lg">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden mt-6 glass rounded-2xl p-6 animate-scale-in">
+            <nav className="flex flex-col space-y-4">
+              {navLinks.map((link, index) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-300 hover:text-white font-medium transition-colors duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {link.name}
+                </a>
+              ))}
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+                href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary hover:text-accent-primary hover:bg-surface-secondary"
+                className="btn-primary mt-4 text-center animate-fade-in-up delay-400"
               >
-                {link}
+                Let's Talk
               </a>
-            ))}
+            </nav>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
