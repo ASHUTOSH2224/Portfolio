@@ -8,12 +8,12 @@ const Skills: React.FC = () => {
     {
       name: 'Frontend',
       icon: Globe,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-accent-primary to-accent-tertiary',
       skills: [
         { name: 'React', level: 95, description: 'Advanced component architecture & hooks' },
-        { name: 'TypeScript', level: 90, description: 'Type-safe development & advanced patterns' },
+        { name: 'TypeScript', level: 90, description: 'Type-safe development & patterns' },
         { name: 'Next.js', level: 88, description: 'SSR, SSG & full-stack applications' },
-        { name: 'Tailwind CSS', level: 92, description: 'Responsive design & custom components' },
+        { name: 'Tailwind CSS', level: 92, description: 'Responsive design & components' },
         { name: 'Vue.js', level: 75, description: 'Component-based development' },
         { name: 'Flutter', level: 80, description: 'Cross-platform mobile development' }
       ]
@@ -21,7 +21,7 @@ const Skills: React.FC = () => {
     {
       name: 'Backend',
       icon: Server,
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-accent-success to-emerald-400',
       skills: [
         { name: 'Node.js', level: 93, description: 'Scalable server-side applications' },
         { name: 'Python', level: 90, description: 'Web development & data processing' },
@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
     {
       name: 'AI/ML',
       icon: Brain,
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-accent-secondary to-pink-500',
       skills: [
         { name: 'TensorFlow', level: 85, description: 'Deep learning & neural networks' },
         { name: 'PyTorch', level: 80, description: 'Research & production ML models' },
@@ -88,34 +88,34 @@ const Skills: React.FC = () => {
   const currentCategory = skillCategories.find(cat => cat.name === activeCategory);
 
   return (
-    <section id="skills" className="py-24 bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="skills" className="section-padding bg-gradient-to-b from-surface-tertiary to-surface-primary">
+      <div className="container-custom">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-gradient mb-6 animate-fade-in-up">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-7xl font-bold text-gradient mb-8 animate-fade-in-up font-display">
             Skills & Expertise
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-2xl text-text-secondary max-w-4xl mx-auto animate-fade-in-up delay-200 font-light">
             A comprehensive toolkit for building modern, scalable applications
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16 animate-fade-in-up delay-300">
+        <div className="flex flex-wrap justify-center gap-6 mb-20 animate-fade-in-up delay-300">
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
               <button
                 key={category.name}
                 onClick={() => setActiveCategory(category.name)}
-                className={`group flex items-center space-x-3 px-6 py-4 rounded-2xl font-semibold transition-all duration-300 ${
+                className={`group flex items-center space-x-4 px-8 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 ${
                   activeCategory === category.name
-                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                    : 'glass text-gray-400 hover:text-white hover:bg-gray-800'
+                    ? `bg-gradient-to-r ${category.color} text-white shadow-glow`
+                    : 'glass-effect text-text-muted hover:text-accent-primary hover:bg-surface-elevated'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <IconComponent className="w-5 h-5" />
+                <IconComponent className="w-6 h-6" />
                 <span>{category.name}</span>
               </button>
             );
@@ -124,27 +124,27 @@ const Skills: React.FC = () => {
 
         {/* Skills Grid */}
         {currentCategory && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up delay-400">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 animate-fade-in-up delay-400">
             {currentCategory.skills.map((skill, index) => (
               <div 
                 key={skill.name}
-                className="modern-card p-6 group hover-lift animate-scale-in"
+                className="modern-card p-8 group hover-lift animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-gradient transition-all duration-300">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-2xl font-bold text-text-primary group-hover:text-gradient transition-all duration-300 font-display">
                     {skill.name}
                   </h3>
-                  <span className="text-2xl font-bold text-gradient">
+                  <span className="text-3xl font-bold text-gradient">
                     {skill.level}%
                   </span>
                 </div>
                 
-                <p className="text-gray-400 text-sm mb-4">
+                <p className="text-text-muted mb-6 leading-relaxed">
                   {skill.description}
                 </p>
                 
-                <div className="progress-bar mb-4">
+                <div className="progress-bar mb-6">
                   <div 
                     className="progress-fill"
                     style={{ 
@@ -154,13 +154,13 @@ const Skills: React.FC = () => {
                   ></div>
                 </div>
                 
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Proficiency</span>
-                  <span className={`font-medium ${
-                    skill.level >= 90 ? 'text-green-400' :
-                    skill.level >= 80 ? 'text-blue-400' :
-                    skill.level >= 70 ? 'text-yellow-400' :
-                    'text-gray-400'
+                <div className="flex items-center justify-between">
+                  <span className="text-text-muted">Proficiency</span>
+                  <span className={`font-medium px-3 py-1 rounded-full text-sm ${
+                    skill.level >= 90 ? 'bg-accent-success/20 text-accent-success' :
+                    skill.level >= 80 ? 'bg-accent-primary/20 text-accent-primary' :
+                    skill.level >= 70 ? 'bg-accent-warning/20 text-accent-warning' :
+                    'bg-text-muted/20 text-text-muted'
                   }`}>
                     {skill.level >= 90 ? 'Expert' :
                      skill.level >= 80 ? 'Advanced' :
@@ -174,19 +174,21 @@ const Skills: React.FC = () => {
         )}
 
         {/* Additional Info */}
-        <div className="mt-20 text-center animate-fade-in-up delay-800">
-          <div className="glass-card p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Always Learning</h3>
-            <p className="text-gray-400 leading-relaxed mb-6">
+        <div className="mt-24 text-center animate-fade-in-up delay-800">
+          <div className="glass-card p-12 max-w-5xl mx-auto">
+            <div className="flex items-center justify-center mb-8">
+              <Cpu className="w-12 h-12 text-accent-primary mr-4" />
+              <h3 className="text-3xl font-bold text-text-primary font-display">Always Learning</h3>
+            </div>
+            <p className="text-xl text-text-secondary leading-relaxed mb-10">
               Technology evolves rapidly, and so do I. I'm constantly exploring new frameworks, 
-              tools, and methodologies to stay at the forefront of software development. 
-              Currently diving deep into Web3, Blockchain, and Advanced AI/ML techniques.
+              tools, and methodologies to stay at the forefront of software development.
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-4">
               {['Web3', 'Blockchain', 'Rust', 'Go', 'Quantum Computing', 'AR/VR'].map((tech, index) => (
                 <span 
                   key={tech}
-                  className="tag animate-fade-in-up"
+                  className="tag text-lg animate-fade-in-up hover-lift"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   🚀 {tech}
