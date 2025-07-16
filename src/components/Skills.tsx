@@ -12,7 +12,7 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-surface-secondary">
+    <section id="skills" className="py-20 bg-surface-secondary animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary">
@@ -24,7 +24,7 @@ const Skills: React.FC = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skills.map((skill, index) => (
-            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card">
+            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
               <h3 className="text-2xl font-semibold text-text-primary mb-4">{skill.title}</h3>
               <ul className="space-y-2">
                 {skill.items.map((item, itemIndex) => (

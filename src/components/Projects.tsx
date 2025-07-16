@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-surface-primary">
+    <section id="projects" className="py-20 bg-surface-primary animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary">
@@ -39,7 +39,7 @@ const Projects: React.FC = () => {
         </div>
         <div className="grid lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card">
+            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
               <h3 className="text-2xl font-semibold text-text-primary mb-4">{project.title}</h3>
               <p className="text-text-secondary leading-relaxed mb-6">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-6">

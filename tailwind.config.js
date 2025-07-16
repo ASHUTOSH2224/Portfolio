@@ -5,25 +5,39 @@ export default {
     extend: {
       colors: {
         surface: {
-          primary: '#ffffff',
-          secondary: '#f8f9fa',
-          accent: '#e9ecef',
-          card: '#ffffff',
-          border: '#dee2e6',
+          primary: '#111827',
+          secondary: '#1f2937',
+          accent: '#374151',
+          card: '#1f2937',
+          border: '#374151',
         },
         text: {
-          primary: '#212529',
-          secondary: '#495057',
-          muted: '#adb5bd',
+          primary: '#f9fafb',
+          secondary: '#d1d5db',
+          muted: '#9ca3af',
         },
         accent: {
-          primary: '#007bff',
-          secondary: '#6c757d',
-          tertiary: '#17a2b8',
+          primary: '#38bdf8',
+          secondary: '#818cf8',
+          tertiary: '#f472b6',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 1s ease-in-out',
+        'fade-in-up': 'fadeInUp 1s ease-in-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
     },
   },

@@ -3,7 +3,7 @@ import { Send } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 bg-surface-primary">
+    <section id="contact" className="py-20 bg-surface-primary animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary">
@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
           </p>
         </div>
         <div className="max-w-3xl mx-auto">
-          <form className="space-y-6">
+          <form className="space-y-6 animate-fade-in-up">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">Name</label>
               <input type="text" id="name" name="name" required className="w-full px-4 py-3 bg-surface-secondary border border-surface-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-primary" />

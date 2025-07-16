@@ -12,7 +12,6 @@ import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Services from './components/Services';
 import analyticsService from './services/analyticsService';
 
 // Admin imports
@@ -162,7 +161,6 @@ function App() {
                   <>
                     <Hero />
                     <About />
-                    <Services />
                     <Projects />
                     <Skills />
                     <Certifications />
