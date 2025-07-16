@@ -2,7 +2,7 @@ import React from 'react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 bg-surface-secondary">
+    <section id="about" className="py-20 bg-surface-secondary animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary">
@@ -13,7 +13,7 @@ const About: React.FC = () => {
           </p>
         </div>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <div className="animate-fade-in-up">
             <h3 className="text-2xl font-bold text-text-primary mb-4">My Approach</h3>
             <p className="text-text-secondary leading-relaxed mb-6">
               I focus on understanding your business goals and translating them into high-quality, scalable, and maintainable code. I believe in clear communication, transparency, and a client-first mindset.
@@ -22,7 +22,7 @@ const About: React.FC = () => {
               I specialize in modern technologies like React, Next.js, Node.js, and Flutter to deliver exceptional results that drive business growth.
             </p>
           </div>
-          <div>
+          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <h3 className="text-2xl font-bold text-text-primary mb-4">My Skills</h3>
             <div className="flex flex-wrap gap-4">
               <span className="bg-surface-accent text-text-primary px-4 py-2 rounded-lg">React</span>

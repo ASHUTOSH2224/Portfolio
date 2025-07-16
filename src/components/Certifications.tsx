@@ -24,7 +24,7 @@ const Certifications: React.FC = () => {
   ];
 
   return (
-    <section id="certifications" className="py-20 bg-surface-secondary">
+    <section id="certifications" className="py-20 bg-surface-secondary animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-text-primary">
@@ -36,7 +36,7 @@ const Certifications: React.FC = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
-            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card">
+            <div key={index} className="bg-surface-card rounded-2xl p-8 border border-surface-border shadow-card animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
               <div className="flex items-center gap-4 mb-4">
                 <div className="bg-surface-accent p-3 rounded-full">
                   <Award className="w-6 h-6 text-accent-primary" />

@@ -3,7 +3,7 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-surface-secondary py-12">
+    <footer className="bg-surface-secondary py-12 animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <p className="text-text-secondary">&copy; {new Date().getFullYear()} Ashutosh</p>

@@ -3,11 +3,11 @@ import { Play, Terminal } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen bg-surface-primary overflow-hidden">
+    <section className="relative min-h-screen bg-surface-primary overflow-hidden animate-fade-in">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in-up">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-text-primary leading-tight">
                 I build modern web and mobile applications that solve business problems.
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
           {/* Right Content */}
-          <div className="relative">
+          <div className="relative animate-fade-in">
             <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" alt="Placeholder" className="rounded-2xl shadow-2xl" />
           </div>
         </div>
