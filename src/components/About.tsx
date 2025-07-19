@@ -28,7 +28,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gray-900">
+    <section id="about" className="py-24 bg-black">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -68,7 +68,7 @@ const About: React.FC = () => {
               {highlights.map((item, index) => (
                 <div 
                   key={index}
-                  className="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 animate-fade-in-up"
+                  className="bg-black border border-gray-800 rounded-lg p-6 hover:border-vercel-blue transition-all duration-300 animate-card-slide-in card-hover-effect"
                   style={{ animationDelay: `${(index + 4) * 0.1}s` }}
                 >
                   <div className="flex items-start space-x-4">
@@ -90,7 +90,7 @@ const About: React.FC = () => {
             {stats.map((stat, index) => (
               <div 
                 key={index}
-                className="bg-gray-800 border border-gray-700 rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300 animate-scale-in"
+                className="bg-black border border-gray-800 rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300 animate-card-slide-in card-3d-effect"
                 style={{ animationDelay: `${(index + 6) * 0.1}s` }}
               >
                 <div className={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color} bg-opacity-10 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
@@ -125,7 +125,7 @@ const About: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-20 animate-fade-in-up delay-800">
-          <div className="bg-gray-800 border border-gray-700 rounded-2xl p-12 max-w-4xl mx-auto">
+          <div className="bg-black border border-gray-800 rounded-2xl p-12 max-w-4xl mx-auto animate-card-slide-in card-glow-effect">
             <div className="flex items-center justify-center mb-6">
               <Target className="w-8 h-8 text-vercel-blue mr-3" />
               <h3 className="text-3xl font-bold text-white">

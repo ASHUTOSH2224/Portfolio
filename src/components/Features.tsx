@@ -98,7 +98,7 @@ const Features: React.FC = () => {
         {features.map((feature, index) => (
           <div key={index} className={`flex flex-col lg:flex-row items-center gap-16 mb-32 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
             {/* Content */}
-            <div className="flex-1 space-y-6">
+            <div className="flex-1 space-y-6 animate-card-slide-in" style={{ animationDelay: `${index * 0.2}s` }}>
               <div className="flex items-center space-x-3">
                 <feature.icon className="w-6 h-6 text-vercel-blue" />
                 <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
@@ -114,8 +114,10 @@ const Features: React.FC = () => {
             </div>
 
             {/* Visual */}
-            <div className="flex-1">
-              {feature.visual}
+            <div className="flex-1 animate-card-slide-in" style={{ animationDelay: `${index * 0.2 + 0.1}s` }}>
+              <div className="card-hover-effect">
+                {feature.visual}
+              </div>
             </div>
           </div>
         ))}

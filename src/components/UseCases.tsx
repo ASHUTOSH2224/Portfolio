@@ -65,7 +65,7 @@ const UseCases: React.FC = () => {
           {useCases.map((useCase, index) => (
             <div 
               key={useCase.title}
-              className="group bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 hover:shadow-2xl hover:shadow-vercel-blue/10 animate-fade-in-up"
+              className="group bg-black border border-gray-800 rounded-xl p-6 hover:border-vercel-blue transition-all duration-300 hover:shadow-2xl hover:shadow-vercel-blue/20 animate-card-slide-in card-hover-effect"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
@@ -104,7 +104,7 @@ const UseCases: React.FC = () => {
 
         {/* CTA Section */}
         <div className="text-center mt-20">
-          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-12 max-w-4xl mx-auto">
+          <div className="bg-black border border-gray-800 rounded-2xl p-12 max-w-4xl mx-auto animate-card-slide-in card-glow-effect">
             <h3 className="text-3xl font-bold text-white mb-6">
               Ready to start your project?
             </h3>

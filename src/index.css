@@ -438,6 +438,58 @@ body {
   animation: gradient 15s ease infinite;
 }
 
+/* Card Animation Classes */
+.animate-card-hover {
+  animation: cardHover 0.3s ease-out forwards;
+}
+
+.animate-card-glow {
+  animation: cardGlow 2s ease-in-out infinite;
+}
+
+.animate-card-slide-in {
+  animation: cardSlideIn 0.6s ease-out forwards;
+}
+
+.animate-card-rotate {
+  animation: cardRotate 0.8s ease-in-out;
+}
+
+.animate-card-pulse {
+  animation: cardPulse 2s ease-in-out infinite;
+}
+
+/* Card Hover Effects */
+.card-hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 112, 243, 0.15);
+  border-color: var(--color-blue);
+}
+
+.card-glow-effect {
+  transition: all 0.3s ease;
+}
+
+.card-glow-effect:hover {
+  box-shadow: 0 0 30px rgba(0, 112, 243, 0.3);
+  border-color: var(--color-blue);
+}
+
+.card-3d-effect {
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.card-3d-effect:hover {
+  transform: rotateY(5deg) rotateX(5deg) translateZ(10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }

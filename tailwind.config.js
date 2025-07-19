@@ -60,9 +60,9 @@ export default {
         // Background colors
         bg: {
           primary: '#000000',
-          secondary: '#111111',
-          tertiary: '#1a1a1a',
-          elevated: '#262626',
+          secondary: '#000000',
+          tertiary: '#000000',
+          elevated: '#111111',
         },
       },
       fontFamily: {
@@ -109,6 +109,11 @@ export default {
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 3s ease-in-out infinite',
         'gradient': 'gradient 15s ease infinite',
+        'card-hover': 'cardHover 0.3s ease-out forwards',
+        'card-glow': 'cardGlow 2s ease-in-out infinite',
+        'card-slide-in': 'cardSlideIn 0.6s ease-out forwards',
+        'card-rotate': 'cardRotate 0.8s ease-in-out',
+        'card-pulse': 'cardPulse 2s ease-in-out infinite',
       },
       keyframes: {
         fadeInUp: {
@@ -131,6 +136,28 @@ export default {
           '0%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
+        },
+        cardHover: {
+          '0%': { transform: 'translateY(0) scale(1)', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' },
+          '50%': { transform: 'translateY(-8px) scale(1.02)', boxShadow: '0 20px 25px rgba(0, 0, 0, 0.3)' },
+          '100%': { transform: 'translateY(-4px) scale(1.01)', boxShadow: '0 12px 20px rgba(0, 0, 0, 0.2)' },
+        },
+        cardGlow: {
+          '0%': { boxShadow: '0 0 0 rgba(0, 112, 243, 0)' },
+          '50%': { boxShadow: '0 0 20px rgba(0, 112, 243, 0.3)' },
+          '100%': { boxShadow: '0 0 0 rgba(0, 112, 243, 0)' },
+        },
+        cardSlideIn: {
+          '0%': { opacity: '0', transform: 'translateY(30px) scale(0.95)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        cardRotate: {
+          '0%': { transform: 'rotateY(0deg)' },
+          '100%': { transform: 'rotateY(360deg)' },
+        },
+        cardPulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
         },
       },
       backdropBlur: {

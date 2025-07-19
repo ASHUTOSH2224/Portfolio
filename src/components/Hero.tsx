@@ -24,9 +24,9 @@ const Hero: React.FC = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      {/* Vercel-style Gradient Background */}
+      {/* Pure Black Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-gray-900"></div>
+        <div className="absolute inset-0 bg-black"></div>
         <div 
           className="absolute bottom-0 left-0 right-0 h-1/2 opacity-20"
           style={{

@@ -112,7 +112,7 @@ const Projects: React.FC = () => {
             {featuredProjects.slice(0, 2).map((project, index) => (
               <div 
                 key={project.id}
-                className="bg-gray-900 border border-gray-800 rounded-xl group overflow-hidden animate-fade-in-up hover:border-gray-700 transition-all duration-300"
+                className="bg-black border border-gray-800 rounded-xl group overflow-hidden animate-card-slide-in card-hover-effect"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative overflow-hidden">
@@ -208,7 +208,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="bg-gray-900 border border-gray-800 rounded-xl group overflow-hidden animate-fade-in-up hover:border-gray-700 transition-all duration-300"
+              className="bg-black border border-gray-800 rounded-xl group overflow-hidden animate-card-slide-in card-hover-effect"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
