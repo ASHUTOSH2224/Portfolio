@@ -3,10 +3,10 @@ import { Code, Brain, Rocket, Award, Users, Coffee, Target } from 'lucide-react'
 
 const About: React.FC = () => {
   const stats = [
-    { icon: Code, label: 'Projects Completed', value: '50+', color: 'apple-blue' },
-    { icon: Users, label: 'Happy Clients', value: '30+', color: 'apple-green' },
-    { icon: Coffee, label: 'Cups of Coffee', value: '1000+', color: 'apple-orange' },
-    { icon: Award, label: 'Years Experience', value: '3+', color: 'apple-purple' }
+    { icon: Code, label: 'Projects Completed', value: '50+', color: 'vercel-blue' },
+    { icon: Users, label: 'Happy Clients', value: '30+', color: 'vercel-green' },
+    { icon: Coffee, label: 'Cups of Coffee', value: '1000+', color: 'vercel-orange' },
+    { icon: Award, label: 'Years Experience', value: '3+', color: 'vercel-purple' }
   ];
 
   const highlights = [
@@ -28,14 +28,14 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="section-large bg-apple-gray-50">
+    <section id="about" className="section-large bg-bg-primary">
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
             About me
           </h2>
-          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
             Passionate about creating digital solutions that make a difference
           </p>
         </div>
@@ -44,20 +44,20 @@ const About: React.FC = () => {
           {/* Content */}
           <div className="space-y-8 animate-fade-in-up delay-300">
             <div className="space-y-6">
-              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700">
+              <h3 className="text-headline font-inter font-bold text-white">
                 Turning ideas into reality
               </h3>
-              <div className="space-y-4 text-body text-apple-gray-500 leading-relaxed">
+              <div className="space-y-4 text-body text-gray-400 leading-relaxed">
                 <p>
-                  With a <span className="text-apple-blue font-medium">B.Tech in Computer Science</span>, 
+                  With a <span className="text-vercel-blue font-medium">B.Tech in Computer Science</span>, 
                   I've dedicated my career to mastering full-stack development and artificial intelligence.
                 </p>
                 <p>
-                  As <span className="text-apple-purple font-medium">Head of Software Architecture</span> at Scalixity, 
+                  As <span className="text-vercel-purple font-medium">Head of Software Architecture</span> at Scalixity, 
                   I lead teams in building scalable, intelligent systems that drive business growth.
                 </p>
                 <p>
-                  I believe in <span className="text-apple-green font-medium">clean code</span>, 
+                  I believe in <span className="text-vercel-green font-medium">clean code</span>, 
                   innovative solutions, and continuous learning.
                 </p>
               </div>
@@ -68,16 +68,16 @@ const About: React.FC = () => {
               {highlights.map((item, index) => (
                 <div 
                   key={index}
-                  className="card p-6 hover:shadow-apple-lg transition-all duration-300 animate-fade-in-up"
+                  className="card p-6 hover:shadow-vercel-lg transition-all duration-300 animate-fade-in-up"
                   style={{ animationDelay: `${(index + 4) * 0.1}s` }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-apple-blue bg-opacity-10 rounded-apple-md">
-                      <item.icon className="w-6 h-6 text-apple-blue" />
+                    <div className="p-3 bg-vercel-blue bg-opacity-10 rounded-vercel-md">
+                      <item.icon className="w-6 h-6 text-vercel-blue" />
                     </div>
                     <div>
-                      <h4 className="text-body font-medium text-apple-gray-700 mb-2">{item.title}</h4>
-                      <p className="text-caption text-apple-gray-500">{item.description}</p>
+                      <h4 className="text-body font-medium text-white mb-2">{item.title}</h4>
+                      <p className="text-caption text-gray-400">{item.description}</p>
                     </div>
                   </div>
                 </div>
@@ -93,13 +93,13 @@ const About: React.FC = () => {
                 className="card-large p-8 text-center group hover:scale-105 transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${(index + 6) * 0.1}s` }}
               >
-                <div className={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color} bg-opacity-10 rounded-apple-lg mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color} bg-opacity-10 rounded-vercel-lg mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className={`w-8 h-8 text-${stat.color}`} />
                 </div>
-                <div className={`text-display-small font-sf-pro-display font-semibold text-${stat.color} mb-2`}>
+                <div className={`text-display-small font-inter font-bold text-${stat.color} mb-2`}>
                   {stat.value}
                 </div>
-                <div className="text-caption text-apple-gray-500 font-medium">{stat.label}</div>
+                <div className="text-caption text-gray-400 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -107,7 +107,7 @@ const About: React.FC = () => {
 
         {/* Skills Preview */}
         <div className="text-center animate-fade-in-up delay-600">
-          <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-8">
+          <h3 className="text-headline font-inter font-bold text-white mb-8">
             Core technologies
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
@@ -125,14 +125,14 @@ const About: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-20 animate-fade-in-up delay-800">
-          <div className="product-showcase max-w-4xl mx-auto">
+          <div className="product-showcase max-w-4xl mx-auto p-8">
             <div className="flex items-center justify-center mb-6">
-              <Target className="w-8 h-8 text-apple-blue mr-3" />
-              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700">
+              <Target className="w-8 h-8 text-vercel-blue mr-3" />
+              <h3 className="text-headline font-inter font-bold text-white">
                 Ready to collaborate?
               </h3>
             </div>
-            <p className="text-body text-apple-gray-500 mb-8 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-body text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto">
               Let's work together to bring your ideas to life with cutting-edge technology and innovative solutions.
             </p>
             <a

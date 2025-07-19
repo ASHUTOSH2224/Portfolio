@@ -106,14 +106,14 @@ const Certifications: React.FC = () => {
   };
 
   return (
-    <section id="certifications" className="section-large bg-white">
+    <section id="certifications" className="section-large bg-bg-primary">
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
             Certifications
           </h2>
-          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
             Professional certifications that validate my expertise and commitment to continuous learning
           </p>
         </div>
@@ -121,8 +121,8 @@ const Certifications: React.FC = () => {
         {/* Featured Certifications */}
         <div className="mb-20">
           <div className="flex items-center justify-center mb-12">
-            <Trophy className="w-6 h-6 text-apple-orange mr-3" />
-            <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 animate-fade-in-up">
+            <Trophy className="w-6 h-6 text-vercel-orange mr-3" />
+            <h3 className="text-headline font-inter font-bold text-white animate-fade-in-up">
               Featured certifications
             </h3>
           </div>
@@ -130,7 +130,7 @@ const Certifications: React.FC = () => {
             {featuredCertifications.map((cert, index) => (
               <div 
                 key={cert.id}
-                className="card-large p-6 group hover:shadow-apple-xl transition-all duration-300 animate-scale-in"
+                className="card-large p-6 group hover:shadow-vercel-xl transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
@@ -138,20 +138,20 @@ const Certifications: React.FC = () => {
                     <img 
                       src={cert.badge} 
                       alt={`${cert.issuer} badge`}
-                      className="w-12 h-12 rounded-apple-md object-cover"
+                      className="w-12 h-12 rounded-vercel-md object-cover"
                     />
                     <div>
                       <span className="tag tag-blue">{cert.category}</span>
                       <div className="flex items-center space-x-1 mt-2">
-                        <Star className="w-3 h-3 text-apple-orange fill-current" />
-                        <span className="text-caption text-apple-orange font-medium">Featured</span>
+                        <Star className="w-3 h-3 text-vercel-orange fill-current" />
+                        <span className="text-caption text-vercel-orange font-medium">Featured</span>
                       </div>
                     </div>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-caption font-medium ${
-                    isExpired(cert.expiryDate) ? 'bg-apple-red bg-opacity-10 text-apple-red' :
-                    isExpiringSoon(cert.expiryDate) ? 'bg-apple-orange bg-opacity-10 text-apple-orange' :
-                    'bg-apple-green bg-opacity-10 text-apple-green'
+                    isExpired(cert.expiryDate) ? 'bg-vercel-red bg-opacity-10 text-vercel-red' :
+                    isExpiringSoon(cert.expiryDate) ? 'bg-vercel-orange bg-opacity-10 text-vercel-orange' :
+                    'bg-vercel-green bg-opacity-10 text-vercel-green'
                   }`}>
                     {isExpired(cert.expiryDate) ? 'Expired' :
                      isExpiringSoon(cert.expiryDate) ? 'Expiring soon' :
@@ -159,11 +159,11 @@ const Certifications: React.FC = () => {
                   </div>
                 </div>
 
-                <h3 className="text-body font-semibold text-apple-gray-700 mb-3 group-hover:text-apple-blue transition-colors duration-300">
+                <h3 className="text-body font-semibold text-white mb-3 group-hover:text-vercel-blue transition-colors duration-300">
                   {cert.title}
                 </h3>
                 
-                <p className="text-caption text-apple-gray-500 mb-4">{cert.issuer}</p>
+                <p className="text-caption text-gray-400 mb-4">{cert.issuer}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {cert.skills.slice(0, 3).map((skill, skillIndex) => (
@@ -172,11 +172,11 @@ const Certifications: React.FC = () => {
                     </span>
                   ))}
                   {cert.skills.length > 3 && (
-                    <span className="text-apple-gray-400 text-xs">+{cert.skills.length - 3}</span>
+                    <span className="text-gray-500 text-xs">+{cert.skills.length - 3}</span>
                   )}
                 </div>
                 
-                <div className="flex items-center justify-between text-caption text-apple-gray-400 mb-4">
+                <div className="flex items-center justify-between text-caption text-gray-500 mb-4">
                   <div className="flex items-center space-x-1">
                     <Calendar className="w-3 h-3" />
                     <span>Issued: {new Date(cert.date).toLocaleDateString()}</span>
@@ -187,7 +187,7 @@ const Certifications: React.FC = () => {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-caption text-apple-gray-400">ID: {cert.credentialId}</span>
+                  <span className="text-caption text-gray-500">ID: {cert.credentialId}</span>
                   <a
                     href={cert.verifyUrl}
                     target="_blank"
@@ -209,10 +209,10 @@ const Certifications: React.FC = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium text-body transition-all duration-200 ${
+              className={`px-6 py-3 rounded-vercel-md font-medium text-body transition-all duration-200 ${
                 activeCategory === category
-                  ? 'bg-apple-blue text-white shadow-apple-md'
-                  : 'bg-apple-gray-100 text-apple-gray-600 hover:bg-apple-gray-200'
+                  ? 'bg-vercel-blue text-white shadow-vercel-md'
+                  : 'bg-bg-elevated text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-700'
               }`}
             >
               {category}
@@ -225,7 +225,7 @@ const Certifications: React.FC = () => {
           {filteredCertifications.map((cert, index) => (
             <div 
               key={cert.id}
-              className="card p-6 group hover:shadow-apple-lg transition-all duration-300 animate-fade-in-up"
+              className="card p-6 group hover:shadow-vercel-lg transition-all duration-300 animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-start justify-between mb-4">
@@ -233,14 +233,14 @@ const Certifications: React.FC = () => {
                   <img 
                     src={cert.badge} 
                     alt={`${cert.issuer} badge`}
-                    className="w-10 h-10 rounded-apple-sm object-cover"
+                    className="w-10 h-10 rounded-vercel-sm object-cover"
                   />
                   <span className="tag tag-blue">{cert.category}</span>
                 </div>
                 <div className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  isExpired(cert.expiryDate) ? 'bg-apple-red bg-opacity-10 text-apple-red' :
-                  isExpiringSoon(cert.expiryDate) ? 'bg-apple-orange bg-opacity-10 text-apple-orange' :
-                  'bg-apple-green bg-opacity-10 text-apple-green'
+                  isExpired(cert.expiryDate) ? 'bg-vercel-red bg-opacity-10 text-vercel-red' :
+                  isExpiringSoon(cert.expiryDate) ? 'bg-vercel-orange bg-opacity-10 text-vercel-orange' :
+                  'bg-vercel-green bg-opacity-10 text-vercel-green'
                 }`}>
                   {isExpired(cert.expiryDate) ? 'Expired' :
                    isExpiringSoon(cert.expiryDate) ? 'Expiring soon' :
@@ -248,35 +248,35 @@ const Certifications: React.FC = () => {
                 </div>
               </div>
 
-              <h3 className="text-body font-semibold text-apple-gray-700 mb-2 group-hover:text-apple-blue transition-colors duration-300">
+              <h3 className="text-body font-semibold text-white mb-3 group-hover:text-vercel-blue transition-colors duration-300">
                 {cert.title}
               </h3>
               
-              <p className="text-caption text-apple-gray-500 mb-4">{cert.issuer}</p>
+              <p className="text-caption text-gray-400 mb-4">{cert.issuer}</p>
               
               <div className="flex flex-wrap gap-2 mb-4">
-                {cert.skills.slice(0, 4).map((skill, skillIndex) => (
+                {cert.skills.slice(0, 2).map((skill, skillIndex) => (
                   <span key={skillIndex} className="tag text-xs">
                     {skill}
                   </span>
                 ))}
+                {cert.skills.length > 2 && (
+                  <span className="text-gray-500 text-xs">+{cert.skills.length - 2}</span>
+                )}
               </div>
               
-              <div className="flex items-center justify-between text-xs text-apple-gray-400 mb-4">
+              <div className="flex items-center justify-between text-caption text-gray-500 mb-4">
                 <div className="flex items-center space-x-1">
                   <Calendar className="w-3 h-3" />
                   <span>{new Date(cert.date).toLocaleDateString()}</span>
                 </div>
-                {cert.expiryDate && !isExpired(cert.expiryDate) && (
-                  <div className="flex items-center space-x-1">
-                    <CheckCircle className="w-3 h-3 text-apple-green" />
-                    <span className="text-apple-green">Valid</span>
-                  </div>
+                {cert.expiryDate && (
+                  <span>Expires: {new Date(cert.expiryDate).toLocaleDateString()}</span>
                 )}
               </div>
               
               <div className="flex items-center justify-between">
-                <span className="text-xs text-apple-gray-400">ID: {cert.credentialId}</span>
+                <span className="text-caption text-gray-500">ID: {cert.credentialId}</span>
                 <a
                   href={cert.verifyUrl}
                   target="_blank"
@@ -291,40 +291,29 @@ const Certifications: React.FC = () => {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="text-center mt-20 animate-fade-in-up delay-800">
-          <div className="product-showcase max-w-4xl mx-auto">
+        {/* Call to Action */}
+        <div className="text-center mt-20 animate-fade-in-up delay-600">
+          <div className="product-showcase max-w-4xl mx-auto p-8">
             <div className="flex items-center justify-center mb-6">
-              <Award className="w-8 h-8 text-apple-blue mr-3" />
-              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700">
-                Certification overview
+              <Award className="w-8 h-8 text-vercel-blue mr-3" />
+              <h3 className="text-headline font-inter font-bold text-white">
+                Continuous learning
               </h3>
             </div>
-            <div className="grid md:grid-cols-4 gap-8">
-              <div>
-                <div className="text-display-small font-sf-pro-display font-semibold text-apple-blue mb-2">
-                  {certifications.length}
-                </div>
-                <div className="text-caption text-apple-gray-500">Total certifications</div>
-              </div>
-              <div>
-                <div className="text-display-small font-sf-pro-display font-semibold text-apple-green mb-2">
-                  {certifications.filter(cert => !isExpired(cert.expiryDate)).length}
-                </div>
-                <div className="text-caption text-apple-gray-500">Active</div>
-              </div>
-              <div>
-                <div className="text-display-small font-sf-pro-display font-semibold text-apple-orange mb-2">
-                  {certifications.filter(cert => isExpiringSoon(cert.expiryDate)).length}
-                </div>
-                <div className="text-caption text-apple-gray-500">Expiring soon</div>
-              </div>
-              <div>
-                <div className="text-display-small font-sf-pro-display font-semibold text-apple-purple mb-2">
-                  {new Set(certifications.map(cert => cert.category)).size}
-                </div>
-                <div className="text-caption text-apple-gray-500">Categories</div>
-              </div>
+            <p className="text-body text-gray-400 leading-relaxed mb-8 max-w-2xl mx-auto">
+              I'm committed to staying current with the latest technologies and best practices 
+              through continuous learning and professional development.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['AWS', 'GCP', 'Azure', 'Kubernetes', 'Serverless', 'Blockchain'].map((tech, index) => (
+                <span 
+                  key={tech}
+                  className="tag tag-purple animate-fade-in"
+                  style={{ animationDelay: `${0.7 + index * 0.1}s` }}
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
         </div>

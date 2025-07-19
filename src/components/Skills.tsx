@@ -8,7 +8,7 @@ const Skills: React.FC = () => {
     {
       name: 'Frontend',
       icon: Globe,
-      color: 'apple-blue',
+      color: 'vercel-blue',
       skills: [
         { name: 'React', level: 95, description: 'Advanced component architecture & hooks' },
         { name: 'TypeScript', level: 90, description: 'Type-safe development & patterns' },
@@ -21,7 +21,7 @@ const Skills: React.FC = () => {
     {
       name: 'Backend',
       icon: Server,
-      color: 'apple-green',
+      color: 'vercel-green',
       skills: [
         { name: 'Node.js', level: 93, description: 'Scalable server-side applications' },
         { name: 'Python', level: 90, description: 'Web development & data processing' },
@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
     {
       name: 'AI/ML',
       icon: Brain,
-      color: 'apple-purple',
+      color: 'vercel-purple',
       skills: [
         { name: 'TensorFlow', level: 85, description: 'Deep learning & neural networks' },
         { name: 'PyTorch', level: 80, description: 'Research & production ML models' },
@@ -47,7 +47,7 @@ const Skills: React.FC = () => {
     {
       name: 'Database',
       icon: Database,
-      color: 'apple-orange',
+      color: 'vercel-orange',
       skills: [
         { name: 'MongoDB', level: 90, description: 'NoSQL database design & optimization' },
         { name: 'PostgreSQL', level: 85, description: 'Relational database management' },
@@ -60,7 +60,7 @@ const Skills: React.FC = () => {
     {
       name: 'DevOps',
       icon: Cloud,
-      color: 'apple-pink',
+      color: 'vercel-pink',
       skills: [
         { name: 'Docker', level: 88, description: 'Containerization & orchestration' },
         { name: 'AWS', level: 85, description: 'Cloud infrastructure & services' },
@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
     {
       name: 'Tools',
       icon: Zap,
-      color: 'apple-yellow',
+      color: 'vercel-orange',
       skills: [
         { name: 'Git', level: 92, description: 'Version control & collaboration' },
         { name: 'VS Code', level: 95, description: 'Development environment mastery' },
@@ -88,14 +88,14 @@ const Skills: React.FC = () => {
   const currentCategory = skillCategories.find(cat => cat.name === activeCategory);
 
   return (
-    <section id="skills" className="section-large bg-apple-gray-50">
+    <section id="skills" className="section-large bg-bg-secondary">
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
             Skills & expertise
           </h2>
-          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
             A comprehensive toolkit for building modern, scalable applications
           </p>
         </div>
@@ -108,10 +108,10 @@ const Skills: React.FC = () => {
               <button
                 key={category.name}
                 onClick={() => setActiveCategory(category.name)}
-                className={`flex items-center space-x-3 px-6 py-3 rounded-full font-medium text-body transition-all duration-200 ${
+                className={`flex items-center space-x-3 px-6 py-3 rounded-vercel-md font-medium text-body transition-all duration-200 ${
                   activeCategory === category.name
-                    ? `bg-${category.color} text-white shadow-apple-md`
-                    : 'bg-white text-apple-gray-600 hover:bg-apple-gray-100 shadow-apple-sm'
+                    ? `bg-${category.color} text-white shadow-vercel-md`
+                    : 'bg-bg-elevated text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-700 shadow-vercel-sm'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -128,11 +128,11 @@ const Skills: React.FC = () => {
             {currentCategory.skills.map((skill, index) => (
               <div 
                 key={skill.name}
-                className="card p-6 group hover:shadow-apple-lg transition-all duration-300 animate-scale-in"
+                className="card p-6 group hover:shadow-vercel-lg transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-body font-semibold text-apple-gray-700 group-hover:text-apple-blue transition-colors duration-300">
+                  <h3 className="text-body font-semibold text-white group-hover:text-vercel-blue transition-colors duration-300">
                     {skill.name}
                   </h3>
                   <span className={`text-subheadline font-semibold text-${currentCategory.color}`}>
@@ -140,7 +140,7 @@ const Skills: React.FC = () => {
                   </span>
                 </div>
                 
-                <p className="text-caption text-apple-gray-500 mb-4 leading-relaxed">
+                <p className="text-caption text-gray-400 mb-4 leading-relaxed">
                   {skill.description}
                 </p>
                 
@@ -152,12 +152,12 @@ const Skills: React.FC = () => {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-caption text-apple-gray-400">Proficiency</span>
-                  <span className={`text-caption font-medium px-2 py-1 rounded-apple-sm ${
-                    skill.level >= 90 ? 'bg-apple-green bg-opacity-10 text-apple-green' :
-                    skill.level >= 80 ? 'bg-apple-blue bg-opacity-10 text-apple-blue' :
-                    skill.level >= 70 ? 'bg-apple-orange bg-opacity-10 text-apple-orange' :
-                    'bg-apple-gray-200 text-apple-gray-500'
+                  <span className="text-caption text-gray-500">Proficiency</span>
+                  <span className={`text-caption font-medium px-2 py-1 rounded-vercel-sm ${
+                    skill.level >= 90 ? 'bg-vercel-green bg-opacity-10 text-vercel-green' :
+                    skill.level >= 80 ? 'bg-vercel-blue bg-opacity-10 text-vercel-blue' :
+                    skill.level >= 70 ? 'bg-vercel-orange bg-opacity-10 text-vercel-orange' :
+                    'bg-gray-700 text-gray-400'
                   }`}>
                     {skill.level >= 90 ? 'Expert' :
                      skill.level >= 80 ? 'Advanced' :
@@ -172,14 +172,14 @@ const Skills: React.FC = () => {
 
         {/* Additional Info */}
         <div className="text-center mt-20 animate-fade-in-up delay-800">
-          <div className="product-showcase max-w-4xl mx-auto">
+          <div className="product-showcase max-w-4xl mx-auto p-8">
             <div className="flex items-center justify-center mb-6">
-              <Code className="w-8 h-8 text-apple-blue mr-3" />
-              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700">
+              <Code className="w-8 h-8 text-vercel-blue mr-3" />
+              <h3 className="text-headline font-inter font-bold text-white">
                 Always learning
               </h3>
             </div>
-            <p className="text-body text-apple-gray-500 leading-relaxed mb-8 max-w-2xl mx-auto">
+            <p className="text-body text-gray-400 leading-relaxed mb-8 max-w-2xl mx-auto">
               Technology evolves rapidly, and so do I. I'm constantly exploring new frameworks, 
               tools, and methodologies to stay at the forefront of software development.
             </p>
