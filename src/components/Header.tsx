@@ -28,7 +28,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="text-headline font-sf-pro-display font-semibold text-apple-gray-700">
+            <span className="text-headline font-inter font-bold text-white">
               Ashutosh
             </span>
           </div>
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-body text-apple-gray-600 hover:text-apple-gray-700 transition-colors duration-200 animate-fade-in"
+                className="text-body text-gray-400 hover:text-white transition-colors duration-200 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {link.name}
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-apple-gray-600 hover:text-apple-gray-700 transition-colors duration-200"
+            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors duration-200"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -68,14 +68,14 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-apple-gray-200 animate-fade-in">
+          <div className="md:hidden bg-bg-elevated border-t border-gray-800 animate-fade-in">
             <nav className="py-4 space-y-2">
               {navLinks.map((link, index) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-4 py-3 text-body text-apple-gray-600 hover:text-apple-gray-700 hover:bg-apple-gray-50 transition-all duration-200 animate-fade-in"
+                  className="block px-4 py-3 text-body text-gray-400 hover:text-white hover:bg-gray-800 transition-all duration-200 animate-fade-in"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {link.name}
