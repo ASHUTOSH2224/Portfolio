@@ -28,14 +28,14 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="section-large bg-bg-primary">
-      <div className="container">
+    <section id="about" className="py-24 bg-gray-900">
+      <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in-up">
             About me
           </h2>
-          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
             Passionate about creating digital solutions that make a difference
           </p>
         </div>
@@ -44,10 +44,10 @@ const About: React.FC = () => {
           {/* Content */}
           <div className="space-y-8 animate-fade-in-up delay-300">
             <div className="space-y-6">
-              <h3 className="text-headline font-inter font-bold text-white">
+              <h3 className="text-3xl font-bold text-white">
                 Turning ideas into reality
               </h3>
-              <div className="space-y-4 text-body text-gray-400 leading-relaxed">
+              <div className="space-y-4 text-lg text-gray-400 leading-relaxed">
                 <p>
                   With a <span className="text-vercel-blue font-medium">B.Tech in Computer Science</span>, 
                   I've dedicated my career to mastering full-stack development and artificial intelligence.
@@ -68,16 +68,16 @@ const About: React.FC = () => {
               {highlights.map((item, index) => (
                 <div 
                   key={index}
-                  className="card p-6 hover:shadow-vercel-lg transition-all duration-300 animate-fade-in-up"
+                  className="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 animate-fade-in-up"
                   style={{ animationDelay: `${(index + 4) * 0.1}s` }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-vercel-blue bg-opacity-10 rounded-vercel-md">
+                    <div className="p-3 bg-vercel-blue bg-opacity-10 rounded-lg">
                       <item.icon className="w-6 h-6 text-vercel-blue" />
                     </div>
                     <div>
-                      <h4 className="text-body font-medium text-white mb-2">{item.title}</h4>
-                      <p className="text-caption text-gray-400">{item.description}</p>
+                      <h4 className="text-lg font-medium text-white mb-2">{item.title}</h4>
+                      <p className="text-gray-400">{item.description}</p>
                     </div>
                   </div>
                 </div>
@@ -90,16 +90,16 @@ const About: React.FC = () => {
             {stats.map((stat, index) => (
               <div 
                 key={index}
-                className="card-large p-8 text-center group hover:scale-105 transition-all duration-300 animate-scale-in"
+                className="bg-gray-800 border border-gray-700 rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${(index + 6) * 0.1}s` }}
               >
-                <div className={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color} bg-opacity-10 rounded-vercel-lg mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`inline-flex items-center justify-center w-16 h-16 bg-${stat.color} bg-opacity-10 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <stat.icon className={`w-8 h-8 text-${stat.color}`} />
                 </div>
-                <div className={`text-display-small font-inter font-bold text-${stat.color} mb-2`}>
+                <div className={`text-3xl font-bold text-${stat.color} mb-2`}>
                   {stat.value}
                 </div>
-                <div className="text-caption text-gray-400 font-medium">{stat.label}</div>
+                <div className="text-gray-400 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -107,14 +107,14 @@ const About: React.FC = () => {
 
         {/* Skills Preview */}
         <div className="text-center animate-fade-in-up delay-600">
-          <h3 className="text-headline font-inter font-bold text-white mb-8">
+          <h3 className="text-2xl font-bold text-white mb-8">
             Core technologies
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {['React', 'Node.js', 'Python', 'TypeScript', 'AI/ML', 'AWS', 'MongoDB', 'Docker'].map((tech, index) => (
               <span 
                 key={tech}
-                className="tag tag-blue animate-fade-in delay-700"
+                className="px-4 py-2 bg-gray-800 border border-gray-700 text-gray-300 rounded-lg text-sm font-medium hover:border-gray-600 transition-colors duration-200 animate-fade-in delay-700"
                 style={{ animationDelay: `${0.7 + index * 0.1}s` }}
               >
                 {tech}
@@ -125,21 +125,22 @@ const About: React.FC = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-20 animate-fade-in-up delay-800">
-          <div className="product-showcase max-w-4xl mx-auto p-8">
+          <div className="bg-gray-800 border border-gray-700 rounded-2xl p-12 max-w-4xl mx-auto">
             <div className="flex items-center justify-center mb-6">
               <Target className="w-8 h-8 text-vercel-blue mr-3" />
-              <h3 className="text-headline font-inter font-bold text-white">
+              <h3 className="text-3xl font-bold text-white">
                 Ready to collaborate?
               </h3>
             </div>
-            <p className="text-body text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xl text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto">
               Let's work together to bring your ideas to life with cutting-edge technology and innovative solutions.
             </p>
             <a
               href="#contact"
-              className="btn-primary"
+              className="bg-white text-black px-8 py-4 rounded-lg font-medium text-lg hover:bg-gray-100 transition-all duration-200 inline-flex items-center space-x-2"
             >
-              Start a project
+              <span>Start a project</span>
+              <Target className="w-5 h-5" />
             </a>
           </div>
         </div>

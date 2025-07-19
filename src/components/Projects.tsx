@@ -88,14 +88,14 @@ const Projects: React.FC = () => {
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
-    <section id="projects" className="section-large bg-bg-primary">
-      <div className="container-wide">
+    <section id="projects" className="py-24 bg-black">
+      <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in-up">
             Featured work
           </h2>
-          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
             Showcasing innovative solutions that blend creativity with cutting-edge technology
           </p>
         </div>
@@ -104,7 +104,7 @@ const Projects: React.FC = () => {
         <div className="mb-20">
           <div className="flex items-center justify-center mb-12">
             <Star className="w-6 h-6 text-vercel-orange mr-3" />
-            <h3 className="text-headline font-inter font-bold text-white animate-fade-in-up">
+            <h3 className="text-2xl font-bold text-white animate-fade-in-up">
               Featured projects
             </h3>
           </div>
@@ -112,7 +112,7 @@ const Projects: React.FC = () => {
             {featuredProjects.slice(0, 2).map((project, index) => (
               <div 
                 key={project.id}
-                className="card-large group overflow-hidden animate-fade-in-up"
+                className="bg-gray-900 border border-gray-800 rounded-xl group overflow-hidden animate-fade-in-up hover:border-gray-700 transition-all duration-300"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative overflow-hidden">
@@ -123,7 +123,7 @@ const Projects: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 right-4">
-                    <span className="tag tag-pink">
+                    <span className="px-3 py-1 bg-vercel-pink text-white text-sm font-medium rounded-lg">
                       Featured
                     </span>
                   </div>
@@ -143,20 +143,20 @@ const Projects: React.FC = () => {
                 
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="tag tag-blue">{project.category}</span>
+                    <span className="px-3 py-1 bg-vercel-blue text-white text-sm font-medium rounded-lg">{project.category}</span>
                   </div>
                   
-                  <h3 className="text-headline font-inter font-bold text-white mb-4 group-hover:text-vercel-blue transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-vercel-blue transition-colors duration-300">
                     {project.title}
                   </h3>
                   
-                  <p className="text-body text-gray-400 mb-6 leading-relaxed">
+                  <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                     {project.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, techIndex) => (
-                      <span key={techIndex} className="tag">
+                      <span key={techIndex} className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-lg">
                         {tech}
                       </span>
                     ))}
@@ -165,19 +165,19 @@ const Projects: React.FC = () => {
                   <div className="flex items-center space-x-4">
                     <a
                       href={project.liveUrl}
-                      className="btn-primary"
+                      className="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 flex items-center space-x-2"
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View project
+                      <ExternalLink className="w-4 h-4" />
+                      <span>View project</span>
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary"
+                      className="bg-gray-800 text-white border border-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-700 hover:border-gray-600 transition-all duration-200 flex items-center space-x-2"
                     >
-                      <Github className="w-4 h-4 mr-2" />
-                      Code
+                      <Github className="w-4 h-4" />
+                      <span>Code</span>
                     </a>
                   </div>
                 </div>
@@ -192,10 +192,10 @@ const Projects: React.FC = () => {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-3 rounded-vercel-md font-medium text-body transition-all duration-200 ${
+              className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeFilter === filter
-                  ? 'bg-vercel-blue text-white shadow-vercel-md'
-                  : 'bg-bg-elevated text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-700'
+                  ? 'bg-vercel-blue text-white shadow-lg'
+                  : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 border border-gray-700'
               }`}
             >
               {filter}
@@ -208,7 +208,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="card group overflow-hidden animate-fade-in-up"
+              className="bg-gray-900 border border-gray-800 rounded-xl group overflow-hidden animate-fade-in-up hover:border-gray-700 transition-all duration-300"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
@@ -227,8 +227,8 @@ const Projects: React.FC = () => {
               
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="tag tag-blue">{project.category}</span>
-                  <div className="flex items-center space-x-3 text-caption text-gray-500">
+                  <span className="px-3 py-1 bg-vercel-blue text-white text-sm font-medium rounded-lg">{project.category}</span>
+                  <div className="flex items-center space-x-3 text-sm text-gray-500">
                     <span className="flex items-center space-x-1">
                       <Eye className="w-3 h-3" />
                       <span>{project.stats.views}</span>
@@ -240,29 +240,29 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-body font-semibold text-white mb-3 group-hover:text-vercel-blue transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-vercel-blue transition-colors duration-300">
                   {project.title}
                 </h3>
                 
-                <p className="text-caption text-gray-400 mb-4 line-clamp-2">
+                <p className="text-gray-400 mb-4 line-clamp-2">
                   {project.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span key={techIndex} className="tag">
+                    <span key={techIndex} className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="tag">+{project.technologies.length - 3}</span>
+                    <span className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">+{project.technologies.length - 3}</span>
                   )}
                 </div>
                 
                 <div className="flex items-center space-x-3">
                   <a
                     href={project.liveUrl}
-                    className="btn-link flex items-center text-sm"
+                    className="text-vercel-blue hover:text-white transition-colors duration-200 flex items-center text-sm"
                   >
                     <ExternalLink className="w-4 h-4 mr-1" />
                     View
@@ -271,7 +271,7 @@ const Projects: React.FC = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-link flex items-center text-sm"
+                    className="text-vercel-blue hover:text-white transition-colors duration-200 flex items-center text-sm"
                   >
                     <Github className="w-4 h-4 mr-1" />
                     Code

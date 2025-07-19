@@ -6,6 +6,8 @@ import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Features from './components/Features';
+import UseCases from './components/UseCases';
 import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -25,19 +27,11 @@ import Login from './admin/pages/Login';
 // Portfolio component
 const Portfolio: React.FC = () => {
   return (
-    <div className="relative">
-      {/* Background Elements */}
-      <div className="fixed inset-0 matrix-bg opacity-30 pointer-events-none"></div>
-      <div className="fixed top-1/4 left-0 w-80 h-80 bg-accent-primary/3 rounded-full blur-3xl animate-float pointer-events-none"></div>
-      <div className="fixed bottom-1/4 right-0 w-96 h-96 bg-accent-secondary/2 rounded-full blur-3xl animate-float delay-300 pointer-events-none"></div>
-      
-      {/* Scroll Progress Indicator */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-surface-border z-50">
-        <div className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary transition-all duration-300" style={{ width: '0%' }}></div>
-      </div>
-
+    <div className="relative bg-black">
       <Header />
       <Hero />
+      <Features />
+      <UseCases />
       <About />
       <Projects />
       <Skills />
@@ -152,30 +146,17 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Router>
-          <div className="min-h-screen bg-gray-50">
+          <div className="min-h-screen bg-black">
             <Toaster position="top-right" />
-            <Header />
-            <main>
-              <Routes>
-                <Route path="/" element={
-                  <>
-                    <Hero />
-                    <About />
-                    <Projects />
-                    <Skills />
-                    <Certifications />
-                    <Contact />
-                  </>
-                } />
-                <Route path="/admin/*" element={
-                  <ProtectedRoute>
-                    <AdminRoutes />
-                  </ProtectedRoute>
-                } />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </main>
-            <Footer />
+            <Routes>
+              <Route path="/" element={<Portfolio />} />
+              <Route path="/admin/*" element={
+                <ProtectedRoute>
+                  <AdminRoutes />
+                </ProtectedRoute>
+              } />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
           </div>
         </Router>
       </AuthProvider>
