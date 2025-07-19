@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code, Database, Brain, Cloud, Smartphone, Zap, Server, Globe, Shield, Cpu } from 'lucide-react';
+import { Code, Database, Brain, Cloud, Smartphone, Globe, Server, Zap } from 'lucide-react';
 
 const Skills: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('Frontend');
@@ -8,7 +8,7 @@ const Skills: React.FC = () => {
     {
       name: 'Frontend',
       icon: Globe,
-      color: 'from-accent-primary to-accent-tertiary',
+      color: 'apple-blue',
       skills: [
         { name: 'React', level: 95, description: 'Advanced component architecture & hooks' },
         { name: 'TypeScript', level: 90, description: 'Type-safe development & patterns' },
@@ -21,7 +21,7 @@ const Skills: React.FC = () => {
     {
       name: 'Backend',
       icon: Server,
-      color: 'from-accent-success to-emerald-400',
+      color: 'apple-green',
       skills: [
         { name: 'Node.js', level: 93, description: 'Scalable server-side applications' },
         { name: 'Python', level: 90, description: 'Web development & data processing' },
@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
     {
       name: 'AI/ML',
       icon: Brain,
-      color: 'from-accent-secondary to-pink-500',
+      color: 'apple-purple',
       skills: [
         { name: 'TensorFlow', level: 85, description: 'Deep learning & neural networks' },
         { name: 'PyTorch', level: 80, description: 'Research & production ML models' },
@@ -47,7 +47,7 @@ const Skills: React.FC = () => {
     {
       name: 'Database',
       icon: Database,
-      color: 'from-orange-500 to-red-500',
+      color: 'apple-orange',
       skills: [
         { name: 'MongoDB', level: 90, description: 'NoSQL database design & optimization' },
         { name: 'PostgreSQL', level: 85, description: 'Relational database management' },
@@ -60,7 +60,7 @@ const Skills: React.FC = () => {
     {
       name: 'DevOps',
       icon: Cloud,
-      color: 'from-indigo-500 to-blue-500',
+      color: 'apple-pink',
       skills: [
         { name: 'Docker', level: 88, description: 'Containerization & orchestration' },
         { name: 'AWS', level: 85, description: 'Cloud infrastructure & services' },
@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
     {
       name: 'Tools',
       icon: Zap,
-      color: 'from-yellow-500 to-orange-500',
+      color: 'apple-yellow',
       skills: [
         { name: 'Git', level: 92, description: 'Version control & collaboration' },
         { name: 'VS Code', level: 95, description: 'Development environment mastery' },
@@ -88,34 +88,34 @@ const Skills: React.FC = () => {
   const currentCategory = skillCategories.find(cat => cat.name === activeCategory);
 
   return (
-    <section id="skills" className="section-padding bg-gradient-to-b from-surface-tertiary to-surface-primary">
-      <div className="container-custom">
+    <section id="skills" className="section-large bg-apple-gray-50">
+      <div className="container">
         {/* Section Header */}
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-7xl font-bold text-gradient mb-8 animate-fade-in-up font-display">
-            Skills & Expertise
+        <div className="text-center mb-20">
+          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+            Skills & expertise
           </h2>
-          <p className="text-2xl text-text-secondary max-w-4xl mx-auto animate-fade-in-up delay-200 font-light">
+          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
             A comprehensive toolkit for building modern, scalable applications
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-6 mb-20 animate-fade-in-up delay-300">
+        <div className="flex flex-wrap justify-center gap-3 mb-16 animate-fade-in-up delay-300">
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
               <button
                 key={category.name}
                 onClick={() => setActiveCategory(category.name)}
-                className={`group flex items-center space-x-4 px-8 py-5 rounded-2xl font-semibold text-lg transition-all duration-300 ${
+                className={`flex items-center space-x-3 px-6 py-3 rounded-full font-medium text-body transition-all duration-200 ${
                   activeCategory === category.name
-                    ? `bg-gradient-to-r ${category.color} text-white shadow-glow`
-                    : 'glass-effect text-text-muted hover:text-accent-primary hover:bg-surface-elevated'
+                    ? `bg-${category.color} text-white shadow-apple-md`
+                    : 'bg-white text-apple-gray-600 hover:bg-apple-gray-100 shadow-apple-sm'
                 }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <IconComponent className="w-6 h-6" />
+                <IconComponent className="w-5 h-5" />
                 <span>{category.name}</span>
               </button>
             );
@@ -124,43 +124,40 @@ const Skills: React.FC = () => {
 
         {/* Skills Grid */}
         {currentCategory && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 animate-fade-in-up delay-400">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up delay-400">
             {currentCategory.skills.map((skill, index) => (
               <div 
                 key={skill.name}
-                className="modern-card p-8 group hover-lift animate-scale-in"
+                className="card p-6 group hover:shadow-apple-lg transition-all duration-300 animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-2xl font-bold text-text-primary group-hover:text-gradient transition-all duration-300 font-display">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-body font-semibold text-apple-gray-700 group-hover:text-apple-blue transition-colors duration-300">
                     {skill.name}
                   </h3>
-                  <span className="text-3xl font-bold text-gradient">
+                  <span className={`text-subheadline font-semibold text-${currentCategory.color}`}>
                     {skill.level}%
                   </span>
                 </div>
                 
-                <p className="text-text-muted mb-6 leading-relaxed">
+                <p className="text-caption text-apple-gray-500 mb-4 leading-relaxed">
                   {skill.description}
                 </p>
                 
-                <div className="progress-bar mb-6">
+                <div className="progress-bar mb-4">
                   <div 
-                    className="progress-fill"
-                    style={{ 
-                      width: `${skill.level}%`,
-                      background: `linear-gradient(90deg, ${currentCategory.color.split(' ')[1]}, ${currentCategory.color.split(' ')[3]})`
-                    }}
+                    className={`progress-fill bg-${currentCategory.color}`}
+                    style={{ width: `${skill.level}%` }}
                   ></div>
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-text-muted">Proficiency</span>
-                  <span className={`font-medium px-3 py-1 rounded-full text-sm ${
-                    skill.level >= 90 ? 'bg-accent-success/20 text-accent-success' :
-                    skill.level >= 80 ? 'bg-accent-primary/20 text-accent-primary' :
-                    skill.level >= 70 ? 'bg-accent-warning/20 text-accent-warning' :
-                    'bg-text-muted/20 text-text-muted'
+                  <span className="text-caption text-apple-gray-400">Proficiency</span>
+                  <span className={`text-caption font-medium px-2 py-1 rounded-apple-sm ${
+                    skill.level >= 90 ? 'bg-apple-green bg-opacity-10 text-apple-green' :
+                    skill.level >= 80 ? 'bg-apple-blue bg-opacity-10 text-apple-blue' :
+                    skill.level >= 70 ? 'bg-apple-orange bg-opacity-10 text-apple-orange' :
+                    'bg-apple-gray-200 text-apple-gray-500'
                   }`}>
                     {skill.level >= 90 ? 'Expert' :
                      skill.level >= 80 ? 'Advanced' :
@@ -174,24 +171,26 @@ const Skills: React.FC = () => {
         )}
 
         {/* Additional Info */}
-        <div className="mt-24 text-center animate-fade-in-up delay-800">
-          <div className="glass-card p-12 max-w-5xl mx-auto">
-            <div className="flex items-center justify-center mb-8">
-              <Cpu className="w-12 h-12 text-accent-primary mr-4" />
-              <h3 className="text-3xl font-bold text-text-primary font-display">Always Learning</h3>
+        <div className="text-center mt-20 animate-fade-in-up delay-800">
+          <div className="product-showcase max-w-4xl mx-auto">
+            <div className="flex items-center justify-center mb-6">
+              <Code className="w-8 h-8 text-apple-blue mr-3" />
+              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700">
+                Always learning
+              </h3>
             </div>
-            <p className="text-xl text-text-secondary leading-relaxed mb-10">
+            <p className="text-body text-apple-gray-500 leading-relaxed mb-8 max-w-2xl mx-auto">
               Technology evolves rapidly, and so do I. I'm constantly exploring new frameworks, 
               tools, and methodologies to stay at the forefront of software development.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {['Web3', 'Blockchain', 'Rust', 'Go', 'Quantum Computing', 'AR/VR'].map((tech, index) => (
                 <span 
                   key={tech}
-                  className="tag text-lg animate-fade-in-up hover-lift"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="tag tag-purple animate-fade-in"
+                  style={{ animationDelay: `${0.9 + index * 0.1}s` }}
                 >
-                  🚀 {tech}
+                  {tech}
                 </span>
               ))}
             </div>

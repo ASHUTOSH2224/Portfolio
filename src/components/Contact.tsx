@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Mail, Phone, MapPin, Calendar, Github, Linkedin, Twitter, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react';
+import { Send, Mail, Phone, MapPin, Calendar, Github, Linkedin, Twitter, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -48,28 +48,24 @@ const Contact: React.FC = () => {
       label: 'Email',
       value: '2224ashutosh@gmail.com',
       href: 'mailto:2224ashutosh@gmail.com',
-      color: 'text-accent-primary'
     },
     {
       icon: Phone,
       label: 'Phone',
       value: '+91 XXX XXX XXXX',
       href: 'tel:+91XXXXXXXXXX',
-      color: 'text-accent-secondary'
     },
     {
       icon: MapPin,
       label: 'Location',
       value: 'India',
       href: '#',
-      color: 'text-accent-tertiary'
     },
     {
       icon: Calendar,
       label: 'Availability',
       value: 'Open for projects',
       href: '#',
-      color: 'text-accent-success'
     }
   ];
 
@@ -78,63 +74,59 @@ const Contact: React.FC = () => {
       icon: Github,
       label: 'GitHub',
       href: 'https://github.com/ASHUTOSH2224',
-      color: 'hover:text-text-primary'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/ashutosh-singh-4b9a93230',
-      color: 'hover:text-accent-primary'
     },
     {
       icon: Twitter,
       label: 'Twitter',
       href: '#',
-      color: 'hover:text-accent-primary'
     }
   ];
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-surface-primary to-surface-secondary">
-      <div className="container-custom">
+    <section id="contact" className="section-large bg-apple-gray-50">
+      <div className="container">
         {/* Section Header */}
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-7xl font-bold text-gradient mb-8 animate-fade-in-up font-display">
-            Let's Work Together
+        <div className="text-center mb-20">
+          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+            Let's work together
           </h2>
-          <p className="text-2xl text-text-secondary max-w-4xl mx-auto animate-fade-in-up delay-200 font-light">
+          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
             Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-20">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="animate-fade-in-left">
-            <div className="modern-card p-10">
-              <div className="flex items-center mb-8">
-                <MessageSquare className="w-8 h-8 text-accent-primary mr-4" />
-                <h3 className="text-3xl font-bold text-text-primary font-display">Send a Message</h3>
-              </div>
+          <div className="animate-fade-in-up delay-300">
+            <div className="card-large p-8">
+              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-6">
+                Send a message
+              </h3>
               
               {submitStatus === 'success' && (
-                <div className="flex items-center space-x-4 bg-accent-success/10 border border-accent-success/20 rounded-2xl p-6 mb-8 animate-fade-in-up">
-                  <CheckCircle className="w-6 h-6 text-accent-success" />
-                  <span className="text-accent-success text-lg">Message sent successfully! I'll get back to you soon.</span>
+                <div className="flex items-center space-x-3 bg-apple-green bg-opacity-10 border border-apple-green border-opacity-20 rounded-apple-md p-4 mb-6 animate-fade-in">
+                  <CheckCircle className="w-5 h-5 text-apple-green" />
+                  <span className="text-body text-apple-green">Message sent successfully! I'll get back to you soon.</span>
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="flex items-center space-x-4 bg-accent-error/10 border border-accent-error/20 rounded-2xl p-6 mb-8 animate-fade-in-up">
-                  <AlertCircle className="w-6 h-6 text-accent-error" />
-                  <span className="text-accent-error text-lg">Something went wrong. Please try again.</span>
+                <div className="flex items-center space-x-3 bg-apple-red bg-opacity-10 border border-apple-red border-opacity-20 rounded-apple-md p-4 mb-6 animate-fade-in">
+                  <AlertCircle className="w-5 h-5 text-apple-red" />
+                  <span className="text-body text-apple-red">Something went wrong. Please try again.</span>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-lg font-medium text-text-secondary mb-3">
-                      Full Name *
+                    <label htmlFor="name" className="block text-body font-medium text-apple-gray-700 mb-2">
+                      Full name
                     </label>
                     <input
                       type="text"
@@ -143,13 +135,13 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-6 py-4 glass-effect rounded-2xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all duration-300 text-lg"
+                      className="form-input"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-lg font-medium text-text-secondary mb-3">
-                      Email Address *
+                    <label htmlFor="email" className="block text-body font-medium text-apple-gray-700 mb-2">
+                      Email address
                     </label>
                     <input
                       type="email"
@@ -158,15 +150,15 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-6 py-4 glass-effect rounded-2xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all duration-300 text-lg"
+                      className="form-input"
                       placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-lg font-medium text-text-secondary mb-3">
-                    Subject *
+                  <label htmlFor="subject" className="block text-body font-medium text-apple-gray-700 mb-2">
+                    Subject
                   </label>
                   <input
                     type="text"
@@ -175,22 +167,22 @@ const Contact: React.FC = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-6 py-4 glass-effect rounded-2xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all duration-300 text-lg"
+                    className="form-input"
                     placeholder="What's this about?"
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="budget" className="block text-lg font-medium text-text-secondary mb-3">
-                      Project Budget
+                    <label htmlFor="budget" className="block text-body font-medium text-apple-gray-700 mb-2">
+                      Project budget
                     </label>
                     <select
                       id="budget"
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-6 py-4 glass-effect rounded-2xl text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all duration-300 text-lg"
+                      className="form-input form-select"
                     >
                       <option value="">Select budget range</option>
                       <option value="under-5k">Under $5,000</option>
@@ -201,7 +193,7 @@ const Contact: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="timeline" className="block text-lg font-medium text-text-secondary mb-3">
+                    <label htmlFor="timeline" className="block text-body font-medium text-apple-gray-700 mb-2">
                       Timeline
                     </label>
                     <select
@@ -209,7 +201,7 @@ const Contact: React.FC = () => {
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full px-6 py-4 glass-effect rounded-2xl text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all duration-300 text-lg"
+                      className="form-input form-select"
                     >
                       <option value="">Select timeline</option>
                       <option value="asap">ASAP</option>
@@ -222,8 +214,8 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-lg font-medium text-text-secondary mb-3">
-                    Project Details *
+                  <label htmlFor="message" className="block text-body font-medium text-apple-gray-700 mb-2">
+                    Project details
                   </label>
                   <textarea
                     id="message"
@@ -232,7 +224,7 @@ const Contact: React.FC = () => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-6 py-4 glass-effect rounded-2xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all duration-300 resize-none text-lg"
+                    className="form-input form-textarea"
                     placeholder="Tell me about your project, goals, and requirements..."
                   />
                 </div>
@@ -240,17 +232,17 @@ const Contact: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-primary py-5 text-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                    <div className="flex items-center justify-center space-x-4">
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                    <div className="flex items-center justify-center space-x-3">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                       <span>Sending...</span>
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center space-x-4">
-                      <Send className="w-6 h-6" />
-                      <span>Send Message</span>
+                    <div className="flex items-center justify-center space-x-3">
+                      <Send className="w-4 h-4" />
+                      <span>Send message</span>
                     </div>
                   )}
                 </button>
@@ -259,24 +251,26 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="animate-fade-in-right">
-            <div className="space-y-10">
+          <div className="animate-fade-in-up delay-400">
+            <div className="space-y-8">
               {/* Contact Details */}
-              <div className="modern-card p-10">
-                <h3 className="text-3xl font-bold text-text-primary mb-8 font-display">Get in Touch</h3>
-                <div className="space-y-8">
+              <div className="card-large p-8">
+                <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-6">
+                  Get in touch
+                </h3>
+                <div className="space-y-6">
                   {contactInfo.map((item, index) => {
                     const IconComponent = item.icon;
                     return (
-                      <div key={index} className="flex items-center space-x-6 group">
-                        <div className={`p-4 bg-gradient-primary rounded-2xl group-hover:scale-110 transition-transform duration-300`}>
-                          <IconComponent className="w-8 h-8 text-white" />
+                      <div key={index} className="flex items-center space-x-4 group">
+                        <div className="p-3 bg-apple-blue bg-opacity-10 rounded-apple-md group-hover:scale-110 transition-transform duration-200">
+                          <IconComponent className="w-5 h-5 text-apple-blue" />
                         </div>
                         <div>
-                          <p className="text-text-muted text-lg">{item.label}</p>
+                          <p className="text-caption text-apple-gray-400">{item.label}</p>
                           <a
                             href={item.href}
-                            className={`text-text-primary font-medium text-xl hover:text-gradient transition-all duration-300 ${item.color}`}
+                            className="text-body font-medium text-apple-gray-700 hover:text-apple-blue transition-colors duration-200"
                           >
                             {item.value}
                           </a>
@@ -288,9 +282,11 @@ const Contact: React.FC = () => {
               </div>
 
               {/* Social Links */}
-              <div className="modern-card p-10">
-                <h3 className="text-2xl font-bold text-text-primary mb-8 font-display">Connect With Me</h3>
-                <div className="flex space-x-6">
+              <div className="card-large p-8">
+                <h3 className="text-body font-semibold text-apple-gray-700 mb-6">
+                  Connect with me
+                </h3>
+                <div className="flex space-x-4">
                   {socialLinks.map((social, index) => {
                     const IconComponent = social.icon;
                     return (
@@ -299,9 +295,9 @@ const Contact: React.FC = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`p-5 glass-effect rounded-2xl hover:bg-surface-elevated transition-all duration-300 hover:scale-110 group ${social.color} hover-glow`}
+                        className="p-4 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-all duration-200 hover:scale-105 group"
                       >
-                        <IconComponent className="w-8 h-8 text-text-muted group-hover:text-current" />
+                        <IconComponent className="w-5 h-5 text-apple-gray-600 group-hover:text-apple-blue" />
                       </a>
                     );
                   })}
@@ -309,15 +305,19 @@ const Contact: React.FC = () => {
               </div>
 
               {/* Quick Response */}
-              <div className="modern-card p-10">
-                <h3 className="text-2xl font-bold text-text-primary mb-6 font-display">Quick Response</h3>
-                <p className="text-text-muted mb-6 text-lg leading-relaxed">
+              <div className="card-large p-8">
+                <h3 className="text-body font-semibold text-apple-gray-700 mb-4">
+                  Quick response
+                </h3>
+                <p className="text-caption text-apple-gray-500 mb-4 leading-relaxed">
                   I typically respond to messages within 24 hours. For urgent inquiries, 
                   feel free to reach out directly via email or phone.
                 </p>
-                <div className="flex items-center space-x-3 text-accent-success">
-                  <div className="w-3 h-3 bg-accent-success rounded-full animate-pulse"></div>
-                  <span className="font-medium text-lg">Usually responds within a few hours</span>
+                <div className="flex items-center space-x-2">
+                  <div className="status-dot status-online"></div>
+                  <span className="text-caption text-apple-green font-medium">
+                    Usually responds within a few hours
+                  </span>
                 </div>
               </div>
             </div>

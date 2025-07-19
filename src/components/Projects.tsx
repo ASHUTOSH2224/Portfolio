@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Eye, Star, ArrowRight, Zap } from 'lucide-react';
+import { ExternalLink, Github, Eye, Star, ArrowRight } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
     {
       id: 1,
       title: 'AI Sales Automation Platform',
-      description: 'Intelligent business platform leveraging ML algorithms for automated workflows.',
+      description: 'Intelligent business platform leveraging ML algorithms for automated workflows and predictive analytics.',
       image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop',
       category: 'AI/ML',
       technologies: ['React', 'Python', 'TensorFlow', 'FastAPI'],
@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
     {
       id: 2,
       title: 'Smart Email Marketing Suite',
-      description: 'ML-powered marketing system with personalized campaigns and intelligent content.',
+      description: 'ML-powered marketing system with personalized campaigns and intelligent content generation.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
       category: 'AI/ML',
       technologies: ['Python', 'FastAPI', 'OpenAI GPT', 'React'],
@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
     {
       id: 3,
       title: 'E-commerce Platform',
-      description: 'Secure e-commerce platform with real-time consultations and payment processing.',
+      description: 'Secure e-commerce platform with real-time consultations and seamless payment processing.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
       category: 'Full Stack',
       technologies: ['Node.js', 'Express', 'MongoDB', 'React Native'],
@@ -46,7 +46,7 @@ const Projects: React.FC = () => {
     {
       id: 4,
       title: 'Analytics Dashboard',
-      description: 'Interactive dashboard with live data visualization and predictive analytics.',
+      description: 'Interactive dashboard with live data visualization and predictive analytics capabilities.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       category: 'Web App',
       technologies: ['React', 'D3.js', 'Node.js', 'WebSocket'],
@@ -57,8 +57,8 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
-      title: 'Mobile App',
-      description: 'Feature-rich mobile application with offline capabilities and cloud sync.',
+      title: 'Mobile Banking App',
+      description: 'Feature-rich mobile application with offline capabilities and secure cloud synchronization.',
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop',
       category: 'Mobile',
       technologies: ['Flutter', 'Dart', 'Firebase', 'SQLite'],
@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
     {
       id: 6,
       title: 'Blockchain Voting System',
-      description: 'Secure, transparent voting platform built on blockchain technology.',
+      description: 'Secure, transparent voting platform built on blockchain technology with smart contracts.',
       image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=600&fit=crop',
       category: 'Web App',
       technologies: ['Solidity', 'Web3.js', 'React', 'Ethereum'],
@@ -88,45 +88,47 @@ const Projects: React.FC = () => {
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
-    <section id="projects" className="section-padding bg-gradient-to-b from-surface-secondary to-surface-tertiary">
-      <div className="container-custom">
+    <section id="projects" className="section-large bg-white">
+      <div className="container-wide">
         {/* Section Header */}
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-7xl font-bold text-gradient mb-8 animate-fade-in-up font-display">
-            Featured Work
+        <div className="text-center mb-20">
+          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+            Featured work
           </h2>
-          <p className="text-2xl text-text-secondary max-w-4xl mx-auto animate-fade-in-up delay-200 font-light">
+          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
             Showcasing innovative solutions that blend creativity with cutting-edge technology
           </p>
         </div>
 
         {/* Featured Projects */}
-        <div className="mb-24">
+        <div className="mb-20">
           <div className="flex items-center justify-center mb-12">
-            <Star className="w-8 h-8 text-accent-primary mr-3" />
-            <h3 className="text-3xl font-bold text-text-primary animate-fade-in-up font-display">Featured Projects</h3>
+            <Star className="w-6 h-6 text-apple-orange mr-3" />
+            <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 animate-fade-in-up">
+              Featured projects
+            </h3>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8">
             {featuredProjects.slice(0, 2).map((project, index) => (
               <div 
                 key={project.id}
-                className="group modern-card overflow-hidden animate-fade-in-up hover-lift"
+                className="card-large group overflow-hidden animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="relative overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-surface-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-6 right-6">
-                    <span className="bg-accent-primary/20 border border-accent-primary/30 text-accent-primary px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-4 right-4">
+                    <span className="tag tag-orange">
                       Featured
                     </span>
                   </div>
-                  <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center space-x-4 text-sm text-text-secondary">
+                  <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center space-x-4 text-sm text-white">
                       <span className="flex items-center space-x-1">
                         <Eye className="w-4 h-4" />
                         <span>{project.stats.views}</span>
@@ -139,21 +141,20 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="p-10">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="tag">{project.category}</span>
-                    <Zap className="w-5 h-5 text-accent-primary" />
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="tag tag-blue">{project.category}</span>
                   </div>
                   
-                  <h3 className="text-3xl font-bold text-text-primary mb-4 group-hover:text-gradient transition-all duration-300 font-display">
+                  <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-4 group-hover:text-apple-blue transition-colors duration-300">
                     {project.title}
                   </h3>
                   
-                  <p className="text-text-muted mb-8 leading-relaxed text-lg">
+                  <p className="text-body text-apple-gray-500 mb-6 leading-relaxed">
                     {project.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-3 mb-8">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, techIndex) => (
                       <span key={techIndex} className="tag">
                         {tech}
@@ -161,22 +162,22 @@ const Projects: React.FC = () => {
                     ))}
                   </div>
                   
-                  <div className="flex items-center space-x-6">
+                  <div className="flex items-center space-x-4">
                     <a
                       href={project.liveUrl}
-                      className="flex items-center space-x-3 btn-primary"
+                      className="btn-primary"
                     >
-                      <ExternalLink className="w-5 h-5" />
-                      <span>Live Demo</span>
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      View project
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-3 btn-secondary"
+                      className="btn-secondary"
                     >
-                      <Github className="w-5 h-5" />
-                      <span>Code</span>
+                      <Github className="w-4 h-4 mr-2" />
+                      Code
                     </a>
                   </div>
                 </div>
@@ -186,15 +187,15 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-6 mb-16 animate-fade-in-up">
+        <div className="flex flex-wrap justify-center gap-3 mb-12 animate-fade-in-up">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-medium text-body transition-all duration-200 ${
                 activeFilter === filter
-                  ? 'bg-gradient-primary text-white shadow-glow'
-                  : 'glass-effect text-text-muted hover:text-accent-primary hover:bg-surface-elevated'
+                  ? 'bg-apple-blue text-white shadow-apple-md'
+                  : 'bg-apple-gray-100 text-apple-gray-600 hover:bg-apple-gray-200'
               }`}
             >
               {filter}
@@ -203,81 +204,81 @@ const Projects: React.FC = () => {
         </div>
 
         {/* All Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <div 
               key={project.id}
-              className="group modern-card overflow-hidden hover-lift animate-fade-in-up"
+              className="card group overflow-hidden animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 {project.featured && (
-                  <div className="absolute top-4 right-4">
-                    <Star className="w-6 h-6 text-accent-primary fill-current" />
+                  <div className="absolute top-3 right-3">
+                    <Star className="w-5 h-5 text-apple-orange fill-current" />
                   </div>
                 )}
               </div>
               
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="tag">{project.category}</span>
-                  <div className="flex items-center space-x-3 text-sm text-text-muted">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="tag tag-blue">{project.category}</span>
+                  <div className="flex items-center space-x-3 text-caption text-apple-gray-400">
                     <span className="flex items-center space-x-1">
-                      <Eye className="w-4 h-4" />
+                      <Eye className="w-3 h-3" />
                       <span>{project.stats.views}</span>
                     </span>
                     <span className="flex items-center space-x-1">
-                      <Star className="w-4 h-4" />
+                      <Star className="w-3 h-3" />
                       <span>{project.stats.stars}</span>
                     </span>
                   </div>
                 </div>
                 
-                <h3 className="text-2xl font-bold text-text-primary mb-3 group-hover:text-gradient transition-all duration-300 font-display">
+                <h3 className="text-body font-semibold text-apple-gray-700 mb-3 group-hover:text-apple-blue transition-colors duration-300">
                   {project.title}
                 </h3>
                 
-                <p className="text-text-muted mb-6 line-clamp-2">
+                <p className="text-caption text-apple-gray-500 mb-4 line-clamp-2">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span key={techIndex} className="tag text-sm">
+                    <span key={techIndex} className="tag text-xs">
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="text-text-muted text-sm">+{project.technologies.length - 3}</span>
+                    <span className="text-apple-gray-400 text-xs">+{project.technologies.length - 3}</span>
                   )}
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-3">
                     <a
                       href={project.liveUrl}
-                      className="p-3 glass-effect rounded-xl hover:bg-surface-elevated transition-colors duration-300 group/btn hover-glow"
+                      className="p-2 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-colors duration-200 group/btn"
                     >
-                      <ExternalLink className="w-5 h-5 text-text-muted group-hover/btn:text-accent-primary" />
+                      <ExternalLink className="w-4 h-4 text-apple-gray-600 group-hover/btn:text-apple-blue" />
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 glass-effect rounded-xl hover:bg-surface-elevated transition-colors duration-300 group/btn hover-glow"
+                      className="p-2 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-colors duration-200 group/btn"
                     >
-                      <Github className="w-5 h-5 text-text-muted group-hover/btn:text-accent-primary" />
+                      <Github className="w-4 h-4 text-apple-gray-600 group-hover/btn:text-apple-blue" />
                     </a>
                   </div>
-                  <button className="text-accent-primary hover:text-accent-secondary font-medium flex items-center space-x-2 group/more">
-                    <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4 group-hover/more:translate-x-1 transition-transform duration-300" />
+                  <button className="btn-link text-caption flex items-center space-x-1 group/more">
+                    <span>Learn more</span>
+                    <ArrowRight className="w-3 h-3 group-hover/more:translate-x-1 transition-transform duration-200" />
                   </button>
                 </div>
               </div>
@@ -286,16 +287,16 @@ const Projects: React.FC = () => {
         </div>
 
         {/* View All Projects CTA */}
-        <div className="text-center mt-20 animate-fade-in-up delay-800">
+        <div className="text-center mt-16 animate-fade-in-up delay-800">
           <a
             href="https://github.com/ASHUTOSH2224"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-4 btn-secondary text-xl px-10 py-5"
+            className="btn-secondary group"
           >
-            <Github className="w-6 h-6" />
-            <span>View All Projects</span>
-            <ArrowRight className="w-6 h-6" />
+            <Github className="w-4 h-4 mr-2" />
+            <span>View all projects</span>
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
           </a>
         </div>
       </div>
