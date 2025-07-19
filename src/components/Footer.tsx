@@ -34,16 +34,16 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-apple-gray-50 border-t border-apple-gray-200">
+    <footer className="bg-bg-primary border-t border-gray-800">
       <div className="container py-16">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand Section */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-3">
+              <h3 className="text-headline font-inter font-bold text-white mb-3">
                 Ashutosh
               </h3>
-              <p className="text-body text-apple-gray-500 leading-relaxed">
+              <p className="text-body text-gray-400 leading-relaxed">
                 Full Stack Developer & AI Engineer passionate about creating innovative 
                 digital solutions that make a difference in the world.
               </p>
@@ -51,19 +51,19 @@ const Footer: React.FC = () => {
             
             <div className="flex items-center space-x-2">
               <div className="status-dot status-online"></div>
-              <span className="text-caption text-apple-green font-medium">Available for new projects</span>
+              <span className="text-caption text-vercel-green font-medium">Available for new projects</span>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-body font-semibold text-apple-gray-700 mb-6">Quick links</h4>
+            <h4 className="text-body font-semibold text-white mb-6">Quick links</h4>
             <nav className="space-y-3">
               {quickLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="block text-body text-apple-gray-500 hover:text-apple-blue transition-colors duration-200"
+                  className="block text-body text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   {link.name}
                 </a>
@@ -73,9 +73,9 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-body font-semibold text-apple-gray-700 mb-6">Let's connect</h4>
+            <h4 className="text-body font-semibold text-white mb-6">Let's connect</h4>
             <div className="space-y-4">
-              <p className="text-body text-apple-gray-500 leading-relaxed">
+              <p className="text-body text-gray-400 leading-relaxed">
                 Ready to discuss your next project? 
                 <br />
                 <a 
@@ -96,10 +96,10 @@ const Footer: React.FC = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-all duration-200 hover:scale-105 group"
+                      className="p-3 bg-bg-elevated border border-gray-800 hover:border-gray-700 hover:bg-gray-800 rounded-vercel-md transition-all duration-200 hover:scale-105 group"
                       aria-label={social.label}
                     >
-                      <IconComponent className="w-4 h-4 text-apple-gray-600 group-hover:text-apple-blue" />
+                      <IconComponent className="w-4 h-4 text-gray-300 group-hover:text-white" />
                     </a>
                   );
                 })}
@@ -109,17 +109,17 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-apple-gray-200 pt-8">
+        <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-caption text-apple-gray-400">
+            <div className="flex items-center space-x-2 text-caption text-gray-500">
               <span>© {currentYear} Ashutosh. Made with</span>
-              <Heart className="w-4 h-4 text-apple-red animate-pulse-slow" />
+              <Heart className="w-4 h-4 text-vercel-pink animate-pulse-slow" />
               <span>and lots of coffee</span>
             </div>
             
             <button
               onClick={scrollToTop}
-              className="flex items-center space-x-2 text-caption text-apple-gray-400 hover:text-apple-blue transition-colors duration-200 group"
+              className="flex items-center space-x-2 text-caption text-gray-500 hover:text-white transition-colors duration-200 group"
             >
               <span>Back to top</span>
               <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-200" />

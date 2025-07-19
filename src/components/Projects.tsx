@@ -88,14 +88,14 @@ const Projects: React.FC = () => {
   const featuredProjects = projects.filter(project => project.featured);
 
   return (
-    <section id="projects" className="section-large bg-white">
+    <section id="projects" className="section-large bg-bg-primary">
       <div className="container-wide">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
             Featured work
           </h2>
-          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
             Showcasing innovative solutions that blend creativity with cutting-edge technology
           </p>
         </div>
@@ -103,8 +103,8 @@ const Projects: React.FC = () => {
         {/* Featured Projects */}
         <div className="mb-20">
           <div className="flex items-center justify-center mb-12">
-            <Star className="w-6 h-6 text-apple-orange mr-3" />
-            <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 animate-fade-in-up">
+            <Star className="w-6 h-6 text-vercel-orange mr-3" />
+            <h3 className="text-headline font-inter font-bold text-white animate-fade-in-up">
               Featured projects
             </h3>
           </div>
@@ -121,9 +121,9 @@ const Projects: React.FC = () => {
                     alt={project.title}
                     className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 right-4">
-                    <span className="tag tag-orange">
+                    <span className="tag tag-pink">
                       Featured
                     </span>
                   </div>
@@ -146,11 +146,11 @@ const Projects: React.FC = () => {
                     <span className="tag tag-blue">{project.category}</span>
                   </div>
                   
-                  <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-4 group-hover:text-apple-blue transition-colors duration-300">
+                  <h3 className="text-headline font-inter font-bold text-white mb-4 group-hover:text-vercel-blue transition-colors duration-300">
                     {project.title}
                   </h3>
                   
-                  <p className="text-body text-apple-gray-500 mb-6 leading-relaxed">
+                  <p className="text-body text-gray-400 mb-6 leading-relaxed">
                     {project.description}
                   </p>
                   
@@ -192,10 +192,10 @@ const Projects: React.FC = () => {
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-3 rounded-full font-medium text-body transition-all duration-200 ${
+              className={`px-6 py-3 rounded-vercel-md font-medium text-body transition-all duration-200 ${
                 activeFilter === filter
-                  ? 'bg-apple-blue text-white shadow-apple-md'
-                  : 'bg-apple-gray-100 text-apple-gray-600 hover:bg-apple-gray-200'
+                  ? 'bg-vercel-blue text-white shadow-vercel-md'
+                  : 'bg-bg-elevated text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-700'
               }`}
             >
               {filter}
@@ -217,10 +217,10 @@ const Projects: React.FC = () => {
                   alt={project.title}
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 {project.featured && (
                   <div className="absolute top-3 right-3">
-                    <Star className="w-5 h-5 text-apple-orange fill-current" />
+                    <Star className="w-5 h-5 text-vercel-orange fill-current" />
                   </div>
                 )}
               </div>
@@ -228,7 +228,7 @@ const Projects: React.FC = () => {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <span className="tag tag-blue">{project.category}</span>
-                  <div className="flex items-center space-x-3 text-caption text-apple-gray-400">
+                  <div className="flex items-center space-x-3 text-caption text-gray-500">
                     <span className="flex items-center space-x-1">
                       <Eye className="w-3 h-3" />
                       <span>{project.stats.views}</span>
@@ -240,46 +240,42 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-body font-semibold text-apple-gray-700 mb-3 group-hover:text-apple-blue transition-colors duration-300">
+                <h3 className="text-body font-semibold text-white mb-3 group-hover:text-vercel-blue transition-colors duration-300">
                   {project.title}
                 </h3>
                 
-                <p className="text-caption text-apple-gray-500 mb-4 line-clamp-2">
+                <p className="text-caption text-gray-400 mb-4 line-clamp-2">
                   {project.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span key={techIndex} className="tag text-xs">
+                    <span key={techIndex} className="tag">
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="text-apple-gray-400 text-xs">+{project.technologies.length - 3}</span>
+                    <span className="tag">+{project.technologies.length - 3}</span>
                   )}
                 </div>
                 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <a
-                      href={project.liveUrl}
-                      className="p-2 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-colors duration-200 group/btn"
-                    >
-                      <ExternalLink className="w-4 h-4 text-apple-gray-600 group-hover/btn:text-apple-blue" />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-colors duration-200 group/btn"
-                    >
-                      <Github className="w-4 h-4 text-apple-gray-600 group-hover/btn:text-apple-blue" />
-                    </a>
-                  </div>
-                  <button className="btn-link text-caption flex items-center space-x-1 group/more">
-                    <span>Learn more</span>
-                    <ArrowRight className="w-3 h-3 group-hover/more:translate-x-1 transition-transform duration-200" />
-                  </button>
+                <div className="flex items-center space-x-3">
+                  <a
+                    href={project.liveUrl}
+                    className="btn-link flex items-center text-sm"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-1" />
+                    View
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-link flex items-center text-sm"
+                  >
+                    <Github className="w-4 h-4 mr-1" />
+                    Code
+                  </a>
                 </div>
               </div>
             </div>
@@ -287,14 +283,13 @@ const Projects: React.FC = () => {
         </div>
 
         {/* View All Projects CTA */}
-        <div className="text-center mt-16 animate-fade-in-up delay-800">
+        <div className="text-center mt-16 animate-fade-in-up delay-300">
           <a
             href="https://github.com/ASHUTOSH2224"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary group"
           >
-            <Github className="w-4 h-4 mr-2" />
             <span>View all projects</span>
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
           </a>
