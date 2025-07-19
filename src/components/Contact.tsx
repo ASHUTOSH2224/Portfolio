@@ -88,14 +88,14 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="section-large bg-apple-gray-50">
+    <section id="contact" className="section-large bg-bg-secondary">
       <div className="container">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-display-medium font-sf-pro-display font-semibold text-apple-gray-700 mb-6 animate-fade-in-up">
+          <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
             Let's work together
           </h2>
-          <p className="text-subheadline text-apple-gray-500 max-w-2xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-subheadline text-gray-400 max-w-2xl mx-auto animate-fade-in-up delay-200">
             Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
           </p>
         </div>
@@ -104,28 +104,28 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div className="animate-fade-in-up delay-300">
             <div className="card-large p-8">
-              <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-6">
+              <h3 className="text-headline font-inter font-bold text-white mb-6">
                 Send a message
               </h3>
               
               {submitStatus === 'success' && (
-                <div className="flex items-center space-x-3 bg-apple-green bg-opacity-10 border border-apple-green border-opacity-20 rounded-apple-md p-4 mb-6 animate-fade-in">
-                  <CheckCircle className="w-5 h-5 text-apple-green" />
-                  <span className="text-body text-apple-green">Message sent successfully! I'll get back to you soon.</span>
+                <div className="flex items-center space-x-3 bg-vercel-green bg-opacity-10 border border-vercel-green border-opacity-20 rounded-vercel-md p-4 mb-6 animate-fade-in">
+                  <CheckCircle className="w-5 h-5 text-vercel-green" />
+                  <span className="text-body text-vercel-green">Message sent successfully! I'll get back to you soon.</span>
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="flex items-center space-x-3 bg-apple-red bg-opacity-10 border border-apple-red border-opacity-20 rounded-apple-md p-4 mb-6 animate-fade-in">
-                  <AlertCircle className="w-5 h-5 text-apple-red" />
-                  <span className="text-body text-apple-red">Something went wrong. Please try again.</span>
+                <div className="flex items-center space-x-3 bg-vercel-red bg-opacity-10 border border-vercel-red border-opacity-20 rounded-vercel-md p-4 mb-6 animate-fade-in">
+                  <AlertCircle className="w-5 h-5 text-vercel-red" />
+                  <span className="text-body text-vercel-red">Something went wrong. Please try again.</span>
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-body font-medium text-apple-gray-700 mb-2">
+                    <label htmlFor="name" className="block text-body font-medium text-white mb-2">
                       Full name
                     </label>
                     <input
@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-body font-medium text-apple-gray-700 mb-2">
+                    <label htmlFor="email" className="block text-body font-medium text-white mb-2">
                       Email address
                     </label>
                     <input
@@ -157,7 +157,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-body font-medium text-apple-gray-700 mb-2">
+                  <label htmlFor="subject" className="block text-body font-medium text-white mb-2">
                     Subject
                   </label>
                   <input
@@ -174,7 +174,7 @@ const Contact: React.FC = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="budget" className="block text-body font-medium text-apple-gray-700 mb-2">
+                    <label htmlFor="budget" className="block text-body font-medium text-white mb-2">
                       Project budget
                     </label>
                     <select
@@ -193,7 +193,7 @@ const Contact: React.FC = () => {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="timeline" className="block text-body font-medium text-apple-gray-700 mb-2">
+                    <label htmlFor="timeline" className="block text-body font-medium text-white mb-2">
                       Timeline
                     </label>
                     <select
@@ -214,7 +214,7 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-body font-medium text-apple-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-body font-medium text-white mb-2">
                     Project details
                   </label>
                   <textarea
@@ -250,74 +250,67 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Information */}
           <div className="animate-fade-in-up delay-400">
             <div className="space-y-8">
-              {/* Contact Details */}
-              <div className="card-large p-8">
-                <h3 className="text-headline font-sf-pro-display font-semibold text-apple-gray-700 mb-6">
+              {/* Contact Info */}
+              <div>
+                <h3 className="text-headline font-inter font-bold text-white mb-6">
                   Get in touch
                 </h3>
-                <div className="space-y-6">
-                  {contactInfo.map((item, index) => {
-                    const IconComponent = item.icon;
-                    return (
-                      <div key={index} className="flex items-center space-x-4 group">
-                        <div className="p-3 bg-apple-blue bg-opacity-10 rounded-apple-md group-hover:scale-110 transition-transform duration-200">
-                          <IconComponent className="w-5 h-5 text-apple-blue" />
-                        </div>
-                        <div>
-                          <p className="text-caption text-apple-gray-400">{item.label}</p>
-                          <a
-                            href={item.href}
-                            className="text-body font-medium text-apple-gray-700 hover:text-apple-blue transition-colors duration-200"
-                          >
-                            {item.value}
-                          </a>
-                        </div>
+                <div className="space-y-4">
+                  {contactInfo.map((info, index) => (
+                    <a
+                      key={info.label}
+                      href={info.href}
+                      className="flex items-center space-x-4 p-4 bg-bg-elevated border border-gray-800 rounded-vercel-lg hover:border-gray-700 transition-all duration-200 group animate-fade-in-up"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="flex-shrink-0 w-10 h-10 bg-vercel-blue bg-opacity-10 rounded-vercel-md flex items-center justify-center group-hover:bg-opacity-20 transition-all duration-200">
+                        <info.icon className="w-5 h-5 text-vercel-blue" />
                       </div>
-                    );
-                  })}
+                      <div>
+                        <p className="text-caption text-gray-400 font-medium">{info.label}</p>
+                        <p className="text-body text-white font-medium">{info.value}</p>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="card-large p-8">
-                <h3 className="text-body font-semibold text-apple-gray-700 mb-6">
-                  Connect with me
+              <div>
+                <h3 className="text-headline font-inter font-bold text-white mb-6">
+                  Follow me
                 </h3>
                 <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-4 bg-apple-gray-100 hover:bg-apple-gray-200 rounded-apple-md transition-all duration-200 hover:scale-105 group"
-                      >
-                        <IconComponent className="w-5 h-5 text-apple-gray-600 group-hover:text-apple-blue" />
-                      </a>
-                    );
-                  })}
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-bg-elevated border border-gray-800 rounded-vercel-md hover:border-gray-700 hover:bg-gray-800 transition-all duration-200 animate-fade-in-up"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <social.icon className="w-5 h-5 text-gray-300" />
+                    </a>
+                  ))}
                 </div>
               </div>
 
-              {/* Quick Response */}
-              <div className="card-large p-8">
-                <h3 className="text-body font-semibold text-apple-gray-700 mb-4">
-                  Quick response
-                </h3>
-                <p className="text-caption text-apple-gray-500 mb-4 leading-relaxed">
-                  I typically respond to messages within 24 hours. For urgent inquiries, 
-                  feel free to reach out directly via email or phone.
+              {/* Availability Status */}
+              <div className="p-6 bg-bg-elevated border border-gray-800 rounded-vercel-lg">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="status-dot status-online"></div>
+                  <h4 className="text-body font-semibold text-white">Current Status</h4>
+                </div>
+                <p className="text-body text-gray-400 mb-4">
+                  I'm currently available for new projects and collaborations. Let's discuss how we can work together to bring your ideas to life.
                 </p>
                 <div className="flex items-center space-x-2">
-                  <div className="status-dot status-online"></div>
-                  <span className="text-caption text-apple-green font-medium">
-                    Usually responds within a few hours
-                  </span>
+                  <span className="text-caption text-gray-500">Response time:</span>
+                  <span className="text-caption text-vercel-green font-medium">Within 24 hours</span>
                 </div>
               </div>
             </div>
