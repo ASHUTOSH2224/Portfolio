@@ -88,8 +88,8 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="section-large bg-bg-secondary">
-      <div className="container">
+    <section id="contact" className="py-24 bg-black">
+      <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-20">
           <h2 className="text-display-medium font-inter font-bold text-white mb-6 animate-fade-in-up">
@@ -102,9 +102,9 @@ const Contact: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="animate-fade-in-up delay-300">
-            <div className="card-large p-8">
-              <h3 className="text-headline font-inter font-bold text-white mb-6">
+          <div className="animate-card-slide-in delay-300">
+            <div className="bg-black border border-gray-800 rounded-xl p-8 card-hover-effect">
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Send a message
               </h3>
               
@@ -251,11 +251,11 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="animate-fade-in-up delay-400">
+          <div className="animate-card-slide-in delay-400">
             <div className="space-y-8">
               {/* Contact Info */}
               <div>
-                <h3 className="text-headline font-inter font-bold text-white mb-6">
+                <h3 className="text-2xl font-bold text-white mb-6">
                   Get in touch
                 </h3>
                 <div className="space-y-4">
@@ -263,7 +263,7 @@ const Contact: React.FC = () => {
                     <a
                       key={info.label}
                       href={info.href}
-                      className="flex items-center space-x-4 p-4 bg-bg-elevated border border-gray-800 rounded-vercel-lg hover:border-gray-700 transition-all duration-200 group animate-fade-in-up"
+                      className="flex items-center space-x-4 p-4 bg-black border border-gray-800 rounded-lg hover:border-vercel-blue transition-all duration-200 group animate-card-slide-in card-hover-effect"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
                       <div className="flex-shrink-0 w-10 h-10 bg-vercel-blue bg-opacity-10 rounded-vercel-md flex items-center justify-center group-hover:bg-opacity-20 transition-all duration-200">

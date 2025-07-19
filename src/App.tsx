@@ -8,7 +8,9 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import UseCases from './components/UseCases';
+import Services from './components/Services';
 import About from './components/About';
+import Testimonials from './components/Testimonials';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
@@ -32,10 +34,12 @@ const Portfolio: React.FC = () => {
       <Hero />
       <Features />
       <UseCases />
+      <Services />
       <About />
       <Projects />
       <Skills />
       <Certifications />
+      <Testimonials />
       <Contact />
       <Footer />
     </div>
