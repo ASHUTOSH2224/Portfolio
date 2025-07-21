@@ -61,9 +61,17 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-white rounded-sm transform rotate-45"></div>
-              <span className="text-xl font-bold text-white">Ashutosh</span>
+            <div className="flex items-center space-x-3">
+              <div className="relative">
+                <div className="w-8 h-8 bg-gradient-to-r from-vercel-blue to-vercel-purple rounded-lg flex items-center justify-center transform rotate-45">
+                  <div className="w-4 h-4 bg-white rounded-sm transform -rotate-45"></div>
+                </div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-vercel-green rounded-full animate-pulse"></div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold text-white">Ashutosh</span>
+                <span className="text-xs text-vercel-blue font-medium">Full Stack Developer</span>
+              </div>
             </div>
           </div>
 
